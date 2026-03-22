@@ -4,6 +4,16 @@
   <meta charset="UTF-8"/>
   <meta name="viewport" content="width=device-width,initial-scale=1.0"/>
   <title>SMB Collection – Comfort You Wear, Class You Carry</title>
+
+  <!-- GOOGLE ANALYTICS 4 — Replace G-XXXXXXXXXX with your Measurement ID -->
+  <script async src="https://www.googletagmanager.com/gtag/js?id=G-XXXXXXXXXX"></script>
+  <script>
+    window.dataLayer = window.dataLayer || [];
+    function gtag(){dataLayer.push(arguments);}
+    gtag('js', new Date());
+    gtag('config', 'G-XXXXXXXXXX');
+  </script>
+
   <link rel="preconnect" href="https://fonts.googleapis.com"/>
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin/>
   <link href="https://fonts.googleapis.com/css2?family=Cormorant+Garamond:ital,wght@0,400;0,500;0,600;0,700;1,400;1,600&family=Raleway:wght@300;400;500;600;700&display=swap" rel="stylesheet"/>
@@ -14,12 +24,10 @@
       --gold:#c9a84c;--gold-light:#e8c86d;--gold-dim:rgba(201,168,76,0.2);
       --cream:#f5edd6;--warm:#ede0c4;--brown:#5c3d2e;
       --text:#2c1810;--muted:#7a6353;--white:#fffdf8;
-      --in-stock:#2d6a4f;--out-stock:#9b2226;
+      --in-stock:#2d6a4f;
     }
     html{scroll-behavior:smooth}
     body{font-family:'Raleway',sans-serif;background:var(--cream);color:var(--text);overflow-x:hidden}
-
-    /* NOISE */
     body::before{content:'';position:fixed;inset:0;background-image:url("data:image/svg+xml,%3Csvg viewBox='0 0 200 200' xmlns='http://www.w3.org/2000/svg'%3E%3Cfilter id='n'%3E%3CfeTurbulence type='fractalNoise' baseFrequency='0.85' numOctaves='4' stitchTiles='stitch'/%3E%3C/filter%3E%3Crect width='100%25' height='100%25' filter='url(%23n)' opacity='0.04'/%3E%3C/svg%3E");pointer-events:none;z-index:9999;opacity:0.4}
 
     /* NAV */
@@ -57,14 +65,14 @@
     .hero-cta:hover{background:var(--gold);color:var(--navy)}
     .coming-badge{display:inline-block;margin-top:2.5rem;padding:.45rem 1.25rem;border:1px dashed rgba(201,168,76,.35);color:rgba(245,237,214,.4);font-size:.65rem;letter-spacing:.22em;text-transform:uppercase;position:relative;z-index:2}
 
-    /* STATS STRIP */
+    /* STATS */
     .stats{background:var(--navy2);display:grid;grid-template-columns:repeat(auto-fit,minmax(160px,1fr))}
     .stat-item{padding:2.2rem 1.5rem;text-align:center;border-right:1px solid var(--gold-dim)}
     .stat-item:last-child{border-right:none}
     .stat-num{font-family:'Cormorant Garamond',serif;font-size:2.2rem;font-weight:700;color:var(--gold);line-height:1}
     .stat-label{font-size:.65rem;letter-spacing:.2em;text-transform:uppercase;color:rgba(245,237,214,.45);margin-top:.35rem}
 
-    /* SECTION COMMONS */
+    /* SECTIONS */
     section{padding:5rem 5vw}
     .sec-label{font-size:.66rem;letter-spacing:.3em;text-transform:uppercase;color:var(--gold);margin-bottom:.4rem}
     .sec-title{font-family:'Cormorant Garamond',serif;font-size:clamp(1.9rem,3.5vw,2.8rem);font-weight:600;color:var(--navy);line-height:1.1}
@@ -74,18 +82,19 @@
     .catalog{background:var(--white)}
     .catalog-top{display:flex;align-items:flex-end;justify-content:space-between;flex-wrap:wrap;gap:1rem;margin-bottom:1.5rem}
     .catalog-filters{display:flex;gap:.6rem;flex-wrap:wrap}
-    .filter-btn{padding:.42rem 1.15rem;border:1px solid var(--warm);background:transparent;font-family:'Raleway',sans-serif;font-size:.68rem;letter-spacing:.1em;text-transform:uppercase;cursor:pointer;color:var(--muted);transition:all .25s;border-radius:0}
+    .filter-btn{padding:.42rem 1.15rem;border:1px solid var(--warm);background:transparent;font-family:'Raleway',sans-serif;font-size:.68rem;letter-spacing:.1em;text-transform:uppercase;cursor:pointer;color:var(--muted);transition:all .25s}
     .filter-btn.active,.filter-btn:hover{background:var(--navy);color:var(--gold);border-color:var(--navy)}
-    .type-filters{display:flex;gap:.5rem;flex-wrap:wrap;margin-bottom:2rem}
+    .type-filters{display:flex;gap:.5rem;flex-wrap:wrap;margin-top:.6rem;margin-bottom:2rem}
     .type-btn{padding:.32rem .9rem;border:1px solid var(--warm);background:transparent;font-family:'Raleway',sans-serif;font-size:.62rem;letter-spacing:.08em;text-transform:uppercase;cursor:pointer;color:var(--muted);transition:all .2s}
     .type-btn.active,.type-btn:hover{background:var(--gold);color:var(--navy);border-color:var(--gold)}
     .catalog-meta{font-size:.72rem;color:var(--muted);margin-bottom:1.5rem}
     .catalog-grid{display:grid;grid-template-columns:repeat(auto-fill,minmax(210px,1fr));gap:1.25rem}
+    #searchBox{padding:.42rem .9rem;border:1px solid var(--warm);background:transparent;font-family:'Raleway',sans-serif;font-size:.72rem;color:var(--text);outline:none;width:180px;transition:border .25s}
+    #searchBox:focus{border-color:var(--gold)}
 
     /* PRODUCT CARD */
-    .card{background:var(--cream);overflow:hidden;transition:transform .3s,box-shadow .3s;position:relative}
+    .card{background:var(--cream);overflow:hidden;transition:transform .3s,box-shadow .3s}
     .card:hover{transform:translateY(-4px);box-shadow:0 18px 36px rgba(26,16,64,.11)}
-    .card.out-of-stock{opacity:.65}
     .card-img{aspect-ratio:1/1;background:var(--warm);position:relative;overflow:hidden}
     .card-img img{width:100%;height:100%;object-fit:cover;transition:transform .4s}
     .card:hover .card-img img{transform:scale(1.05)}
@@ -95,23 +104,44 @@
     .badge-gents{background:#dce8f5;color:#1a3a5c}
     .badge-unisex{background:#e8f0e8;color:#1a4a2a}
     .badge-kids{background:#fef3cd;color:#7a4f00}
-    .stock-dot{position:absolute;bottom:.6rem;right:.6rem;width:8px;height:8px;border-radius:50%}
-    .dot-in{background:var(--in-stock)}
-    .dot-out{background:var(--out-stock)}
     .card-body{padding:1rem 1.1rem 1.3rem}
     .card-code{font-size:.58rem;letter-spacing:.15em;color:var(--muted);text-transform:uppercase;margin-bottom:.2rem}
     .card-name{font-family:'Cormorant Garamond',serif;font-size:1.05rem;font-weight:600;color:var(--navy);margin-bottom:.3rem;line-height:1.2}
     .card-type{font-size:.62rem;color:var(--muted);margin-bottom:.7rem;text-transform:uppercase;letter-spacing:.08em}
     .card-footer{display:flex;align-items:center;justify-content:space-between}
     .card-price{font-family:'Cormorant Garamond',serif;font-size:1.2rem;font-weight:700;color:var(--brown)}
-    .card-stock{font-size:.6rem;letter-spacing:.1em;text-transform:uppercase;padding:.2rem .55rem;border:1px solid}
-    .stock-in{color:var(--in-stock);border-color:var(--in-stock)}
-    .stock-out{color:var(--out-stock);border-color:var(--out-stock)}
+    .enquire-btn{font-size:.6rem;letter-spacing:.1em;text-transform:uppercase;padding:.25rem .65rem;border:1px solid var(--gold);color:var(--gold);background:transparent;cursor:pointer;font-family:'Raleway',sans-serif;transition:all .2s}
+    .enquire-btn:hover{background:var(--gold);color:var(--navy)}
 
     /* NO RESULTS */
     .no-results{text-align:center;padding:4rem 2rem;grid-column:1/-1}
     .no-results h3{font-family:'Cormorant Garamond',serif;font-size:1.8rem;color:var(--navy);margin-bottom:.5rem}
     .no-results p{font-size:.82rem;color:var(--muted)}
+
+    /* MODAL */
+    .modal-overlay{display:none;position:fixed;inset:0;background:rgba(10,6,30,.75);z-index:500;align-items:center;justify-content:center;padding:1rem;backdrop-filter:blur(4px)}
+    .modal-overlay.open{display:flex}
+    .modal{background:var(--white);max-width:480px;width:100%;position:relative;padding:2.5rem 2rem;max-height:90vh;overflow-y:auto}
+    .modal-close{position:absolute;top:1rem;right:1rem;background:none;border:none;font-size:1.4rem;cursor:pointer;color:var(--muted);line-height:1;padding:.25rem .5rem}
+    .modal-close:hover{color:var(--navy)}
+    .modal-product{display:flex;gap:.9rem;align-items:center;padding:.8rem;background:var(--cream);margin-bottom:1.5rem}
+    .modal-product img{width:60px;height:60px;object-fit:cover;background:var(--warm);flex-shrink:0}
+    .modal-product-name{font-family:'Cormorant Garamond',serif;font-size:1rem;font-weight:600;color:var(--navy)}
+    .modal-product-code{font-size:.62rem;color:var(--muted);letter-spacing:.1em;text-transform:uppercase;margin:.15rem 0}
+    .modal-product-price{font-family:'Cormorant Garamond',serif;font-size:.95rem;font-weight:700;color:var(--brown)}
+    .modal h3{font-family:'Cormorant Garamond',serif;font-size:1.4rem;color:var(--navy);margin-bottom:.3rem}
+    .modal-sub{font-size:.73rem;color:var(--muted);margin-bottom:1.25rem}
+    .modal-form{display:flex;flex-direction:column;gap:.8rem}
+    .modal-form input,.modal-form textarea{background:var(--cream);border:1px solid var(--warm);padding:.75rem .9rem;font-family:'Raleway',sans-serif;font-size:.8rem;color:var(--text);outline:none;transition:border .25s;width:100%}
+    .modal-form input:focus,.modal-form textarea:focus{border-color:var(--gold)}
+    .modal-form textarea{resize:vertical;min-height:90px}
+    .modal-submit{padding:.85rem;background:var(--navy);color:var(--gold);border:none;cursor:pointer;font-family:'Raleway',sans-serif;font-size:.72rem;letter-spacing:.2em;text-transform:uppercase;font-weight:700;transition:background .25s;width:100%}
+    .modal-submit:hover{background:var(--gold);color:var(--navy)}
+    .modal-submit:disabled{opacity:.6;cursor:not-allowed}
+    .form-success{display:none;text-align:center;padding:2rem 0}
+    .form-success .tick{font-size:2.5rem;margin-bottom:.75rem}
+    .form-success h4{font-family:'Cormorant Garamond',serif;font-size:1.4rem;color:var(--navy);margin-bottom:.4rem}
+    .form-success p{font-size:.78rem;color:var(--muted)}
 
     /* CONTACT */
     .contact{background:var(--navy)}
@@ -133,7 +163,8 @@
     .c-form textarea{resize:vertical;min-height:110px}
     .c-form button{padding:.88rem 2rem;background:var(--gold);color:var(--navy);border:none;cursor:pointer;font-family:'Raleway',sans-serif;font-size:.72rem;letter-spacing:.2em;text-transform:uppercase;font-weight:700;transition:background .25s;align-self:flex-start}
     .c-form button:hover{background:var(--gold-light)}
-    #formMsg{font-size:.72rem;color:var(--gold);display:none}
+    .c-form button:disabled{opacity:.6;cursor:not-allowed}
+    #genFormMsg{font-size:.75rem;margin-top:.25rem;display:none}
 
     /* FOOTER */
     footer{background:#0d0820;padding:1.8rem 5vw;display:flex;align-items:center;justify-content:space-between;flex-wrap:wrap;gap:1rem;border-top:1px solid var(--gold-dim)}
@@ -178,9 +209,9 @@
 
 <!-- STATS -->
 <div class="stats">
-  <div class="stat-item reveal"><div class="stat-num" id="statTotal">130</div><div class="stat-label">Products</div></div>
-  <div class="stat-item reveal"><div class="stat-num" id="statInStock">—</div><div class="stat-label">In Stock</div></div>
+  <div class="stat-item reveal"><div class="stat-num">119</div><div class="stat-label">Products Available</div></div>
   <div class="stat-item reveal"><div class="stat-num">4</div><div class="stat-label">Categories</div></div>
+  <div class="stat-item reveal"><div class="stat-num">₹25</div><div class="stat-label">Starting From</div></div>
   <div class="stat-item reveal"><div class="stat-num">🌍</div><div class="stat-label">Pan-India Delivery</div></div>
 </div>
 
@@ -189,7 +220,6 @@
   <div class="sec-label">Our Products</div>
   <h2 class="sec-title">The Collection</h2>
   <div class="sec-line"></div>
-
   <div class="catalog-top">
     <div>
       <div class="catalog-filters" id="genderFilters">
@@ -199,17 +229,10 @@
         <button class="filter-btn" data-g="Unisex">Unisex</button>
         <button class="filter-btn" data-g="Kids">Kids</button>
       </div>
-      <div class="type-filters" id="typeFilters" style="margin-top:.6rem"></div>
+      <div class="type-filters" id="typeFilters"></div>
     </div>
-    <div style="display:flex;gap:.6rem;align-items:center;flex-wrap:wrap">
-      <label style="font-size:.68rem;letter-spacing:.1em;text-transform:uppercase;color:var(--muted)">
-        <input type="checkbox" id="inStockOnly" style="margin-right:.3rem;accent-color:var(--navy)"/> In Stock Only
-      </label>
-      <input id="searchBox" type="text" placeholder="Search products…"
-        style="padding:.42rem .9rem;border:1px solid var(--warm);background:transparent;font-family:'Raleway',sans-serif;font-size:.72rem;color:var(--text);outline:none;width:160px"/>
-    </div>
+    <input id="searchBox" type="text" placeholder="Search products…"/>
   </div>
-
   <div class="catalog-meta" id="catalogMeta"></div>
   <div class="catalog-grid" id="catalogGrid"></div>
 </section>
@@ -226,145 +249,293 @@
       <div class="c-item reveal"><div class="c-icon">✉</div><div><h4>Email</h4><a href="mailto:smbcollections5253@gmail.com">smbcollections5253@gmail.com</a></div></div>
       <div class="c-item reveal"><div class="c-icon">👤</div><div><h4>Contact Person</h4><p>Mariam Slatewala</p></div></div>
     </div>
-    <form class="c-form reveal" id="contactForm">
-      <input type="text" placeholder="Your Name" required/>
-      <input type="email" placeholder="Email Address" required/>
-      <input type="tel" placeholder="Phone Number"/>
-      <textarea placeholder="Your message…"></textarea>
-      <button type="submit">Send Message</button>
-      <p id="formMsg">✓ Message sent! We'll be in touch soon.</p>
+    <form class="c-form reveal" id="generalForm">
+      <input type="text"  name="name"    placeholder="Your Name"     required/>
+      <input type="email" name="email"   placeholder="Email Address" required/>
+      <input type="tel"   name="phone"   placeholder="Phone Number"/>
+      <textarea           name="message" placeholder="Your message…" required></textarea>
+      <button type="submit" id="genSubmitBtn">Send Message</button>
+      <p id="genFormMsg"></p>
     </form>
   </div>
 </section>
 
-<!-- FOOTER -->
 <footer>
   <p>© 2025 <span class="fg">SMB Collection</span> · Bangalore, India</p>
   <p class="fg">Comfort You Wear, Class You Carry</p>
 </footer>
 
+<!-- PRODUCT ENQUIRY MODAL -->
+<div class="modal-overlay" id="modalOverlay">
+  <div class="modal">
+    <button class="modal-close" id="modalClose" aria-label="Close">✕</button>
+    <div class="modal-product">
+      <img id="modalImg" src="" alt="Product"/>
+      <div>
+        <div class="modal-product-name"  id="modalName"></div>
+        <div class="modal-product-code"  id="modalCode"></div>
+        <div class="modal-product-price" id="modalPrice"></div>
+      </div>
+    </div>
+    <h3>Enquire About This Product</h3>
+    <p class="modal-sub">Fill in your details and we will get back to you within 24 hours.</p>
+    <form class="modal-form" id="enquiryForm">
+      <input type="text"   name="name"     placeholder="Your Name"       required/>
+      <input type="email"  name="email"    placeholder="Email Address"    required/>
+      <input type="tel"    name="phone"    placeholder="Phone Number"     required/>
+      <input type="number" name="quantity" placeholder="Quantity needed"  min="1"/>
+      <textarea            name="message"  placeholder="Any additional details…"></textarea>
+      <button type="submit" class="modal-submit" id="enquirySubmitBtn">Send Enquiry</button>
+    </form>
+    <div class="form-success" id="formSuccess">
+      <div class="tick">✅</div>
+      <h4>Enquiry Sent!</h4>
+      <p>Thank you! We will reach out within 24 hours.</p>
+    </div>
+  </div>
+</div>
+
 <script>
-const PRODUCTS = [{"code": "L/AL/001", "name": "Ladies Floral ankle", "gender": "Ladies", "type": "Ankle Length", "img": "https://drive.google.com/thumbnail?id=18ZLSJH1O06L4-Mp2r57SFdk5oE9hThRt&sz=w400", "price": "₹50", "balance": 0, "in_stock": false}, {"code": "L/BT/001", "name": "Ladies Booties Plain", "gender": "Ladies", "type": "Booties", "img": "https://drive.google.com/thumbnail?id=1sC-NXgdqWl0gG-IxtD8ywOkKRu9QyW-k&sz=w400", "price": "₹35", "balance": 1, "in_stock": true}, {"code": "G/BT/001", "name": "Gents booties design", "gender": "Gents", "type": "Booties", "img": "https://drive.google.com/thumbnail?id=1G9jGrCsQWEmrbrSrhX4XEIassP8lLwP8&sz=w400", "price": "₹30", "balance": 8, "in_stock": true}, {"code": "L/AL/002", "name": "Ladies ankle length plain with smiley", "gender": "Ladies", "type": "Ankle Length", "img": "https://drive.google.com/thumbnail?id=1cxscSvlFo6lyNEKGeFy8BhDrvYJWmaBz&sz=w400", "price": "₹50", "balance": 5, "in_stock": true}, {"code": "L/AL/003", "name": "Designer socks", "gender": "Ladies", "type": "Ankle Length", "img": "", "price": "₹60", "balance": 2, "in_stock": true}, {"code": "G/AL/001", "name": "Sporty look Ankle length", "gender": "Gents", "type": "Ankle Length", "img": "https://drive.google.com/thumbnail?id=1TdQ6QeoHNmuurz74K3LOZxRl4C9W-NAo&sz=w400", "price": "₹50", "balance": 0, "in_stock": false}, {"code": "L/AL/004", "name": "Ladies Net Black ankle length", "gender": "Ladies", "type": "Ankle Length", "img": "https://drive.google.com/thumbnail?id=1sJDqOxIluCdQN6YfDoadYy4WsTw2Ctt2&sz=w400", "price": "₹70", "balance": 8, "in_stock": true}, {"code": "L/AL/005", "name": "Floral design rose", "gender": "Ladies", "type": "Ankle Length", "img": "https://drive.google.com/thumbnail?id=10nHAdjinMvTKvdXHAm_dNkd9Xq3GgCY9&sz=w400", "price": "₹40", "balance": 4, "in_stock": true}, {"code": "U/FL/001", "name": "Plain full length", "gender": "Unisex", "type": "Full Length", "img": "https://drive.google.com/thumbnail?id=1_bNZA9AaoOOpE_2fHUG49FCxDsncLYbV&sz=w400", "price": "₹50", "balance": 1, "in_stock": true}, {"code": "U/SL/001", "name": "Black sleeves", "gender": "Unisex", "type": "Sleeves", "img": "https://drive.google.com/thumbnail?id=14zr7y-1hLT4QJWWws5xF9N-BFroZVkc4&sz=w400", "price": "₹60", "balance": 8, "in_stock": true}, {"code": "U/AL/001", "name": "White design Ankle", "gender": "Unisex", "type": "Ankle Length", "img": "https://drive.google.com/thumbnail?id=1y07wBbPSUYXohiMPYip3PlbKC3NNH3YO&sz=w400", "price": "₹50", "balance": 5, "in_stock": true}, {"code": "U/SL/002", "name": "Beige sleeves rider", "gender": "Unisex", "type": "Sleeves", "img": "https://drive.google.com/thumbnail?id=1yQ41InkcF4-KA3pN2AeYefgAzjqa-oW7&sz=w400", "price": "₹70", "balance": 3, "in_stock": true}, {"code": "G/FL/001", "name": "Gents full length white with different base", "gender": "Gents", "type": "Full Length", "img": "https://drive.google.com/thumbnail?id=1mYaYorREJ5H_wh53hrKw42MLDNSjAOEz&sz=w400", "price": "₹70", "balance": 0, "in_stock": false}, {"code": "G/FL/002", "name": "Gents base colour style", "gender": "Gents", "type": "Full Length", "img": "https://drive.google.com/thumbnail?id=1atzzx7NC7Z3EzUbQJT_nb436Zuom3JOH&sz=w400", "price": "₹70", "balance": 3, "in_stock": true}, {"code": "G/FL/003", "name": "Heavy grade design", "gender": "Gents", "type": "Full Length", "img": "https://drive.google.com/thumbnail?id=1vBGZBl9jdvxnXshVUxqBZwmf2uNBbSC-&sz=w400", "price": "₹120", "balance": 0, "in_stock": false}, {"code": "G/AL/002", "name": "Checks style", "gender": "Gents", "type": "Ankle Length", "img": "https://drive.google.com/thumbnail?id=1moEOTcSm49qCasxhQx4_M1bYEz_j3tqk&sz=w400", "price": "₹70", "balance": 0, "in_stock": false}, {"code": "L/AL/006", "name": "Ladies ankle length silicon", "gender": "Ladies", "type": "Ankle Length", "img": "https://drive.google.com/thumbnail?id=1hHkW-OoAPj-HPotNOwCXYKUq4X7NdLOw&sz=w400", "price": "₹70", "balance": 0, "in_stock": false}, {"code": "U/SS/001", "name": "Woolen multicolour slipper", "gender": "Unisex", "type": "Slipper Socks", "img": "https://drive.google.com/thumbnail?id=1NSw3SNyTxrPWTZjii9eQuwsmdOgei3qF&sz=w400", "price": "₹40", "balance": 9, "in_stock": true}, {"code": "U/KD/001", "name": "Kids full length socks", "gender": "Kids", "type": "Kids", "img": "https://drive.google.com/thumbnail?id=1qFJUAVv2gRkIMOKweh0Z_I6pPYLvXaiz&sz=w400", "price": "₹50", "balance": 1, "in_stock": true}, {"code": "U/BT/001", "name": "Plain solid colour booties", "gender": "Unisex", "type": "Booties", "img": "https://drive.google.com/thumbnail?id=17fLiME3G7TSUjWis5JJrAW-AuCMTCDcF&sz=w400", "price": "₹90", "balance": 11, "in_stock": true}, {"code": "U/KD/002", "name": "Kids anti slip colourful", "gender": "Kids", "type": "Kids", "img": "https://drive.google.com/thumbnail?id=1fiL6As1HY0863oMFmiFlkIfvCDUf4UjJ&sz=w400", "price": "₹50", "balance": 2, "in_stock": true}, {"code": "U/KD/003", "name": "Colourful full length", "gender": "Kids", "type": "Kids", "img": "https://drive.google.com/thumbnail?id=1ouDrEhKf8e-fvWEdJNyy1AaZQt6UYpF8&sz=w400", "price": "₹50", "balance": 6, "in_stock": true}, {"code": "U/AL/002", "name": "Boots style socks", "gender": "Unisex", "type": "Ankle Length", "img": "https://drive.google.com/thumbnail?id=1A2MU1lT9QetmxyBlyJXpm1NrFj-2GVK5&sz=w400", "price": "₹60", "balance": 7, "in_stock": true}, {"code": "L/LG/001", "name": "Plain white leggings", "gender": "Ladies", "type": "Leggings", "img": "https://drive.google.com/thumbnail?id=1zhZeH0Aaf1bocAt1zws6cnF4hvG_UxhD&sz=w400", "price": "₹110", "balance": 6, "in_stock": true}, {"code": "L/KD/001", "name": "Small child socks", "gender": "Kids", "type": "Kids", "img": "https://drive.google.com/thumbnail?id=1p2ZsiQFG08AUc0kSibXt0_8w1lznlkkc&sz=w400", "price": "₹50", "balance": 7, "in_stock": true}, {"code": "U/AL/003", "name": "Shoe lace multicolour socks", "gender": "Unisex", "type": "Ankle Length", "img": "https://drive.google.com/thumbnail?id=1Pm3W1LyXNrOYCrFhuE-6AXhHmYxOvPA5&sz=w400", "price": "₹30", "balance": 10, "in_stock": true}, {"code": "U/KD/004", "name": "Kids 0-2 pair", "gender": "Kids", "type": "Kids", "img": "https://drive.google.com/thumbnail?id=1G18LRRFwOBcrz6NWRmzTYXzepryY1WEx&sz=w400", "price": "₹70", "balance": 8, "in_stock": true}, {"code": "U/KD/005", "name": "Giraffe style kids socks 2-5", "gender": "Kids", "type": "Kids", "img": "https://drive.google.com/thumbnail?id=1Dp2ZcbRJMg7tdXfeUJQcKpjjyfBNiE62&sz=w400", "price": "₹50", "balance": 8, "in_stock": true}, {"code": "U/KD/006", "name": "Giraffe kids 6-9", "gender": "Kids", "type": "Kids", "img": "https://drive.google.com/thumbnail?id=1jMy-YV71FLZvalOojVODyWFsfHN_N6Z1&sz=w400", "price": "₹50", "balance": 6, "in_stock": true}, {"code": "U/KD/007", "name": "Pack of 2 socks for kids baby socks", "gender": "Kids", "type": "Kids", "img": "https://drive.google.com/thumbnail?id=1AwqusGbscFh7wo2ka7NSpKtTdqzqaYzL&sz=w400", "price": "₹80", "balance": 6, "in_stock": true}, {"code": "G/AL/003", "name": "Hanes ankle length Blue", "gender": "Gents", "type": "Ankle Length", "img": "https://drive.google.com/thumbnail?id=13FS6ok2hC4XddpgP_VYFC0-IYkzIiwJy&sz=w400", "price": "₹80", "balance": 6, "in_stock": true}, {"code": "G/AL/004", "name": "Hanes Ankle length Black", "gender": "Gents", "type": "Ankle Length", "img": "https://drive.google.com/thumbnail?id=1JXqssawgh-bPYPQpjUOkF24ckJnqyjOV&sz=w400", "price": "₹80", "balance": 6, "in_stock": true}, {"code": "G/AL/005", "name": "Hanes Ankle length Navy Blue", "gender": "Gents", "type": "Ankle Length", "img": "https://drive.google.com/thumbnail?id=1iBJYl-dxdl5Wj0y6bzhJgH2fUSwepLZT&sz=w400", "price": "₹70", "balance": 6, "in_stock": true}, {"code": "G/AL/006", "name": "Hanes Ankle length grey", "gender": "Gents", "type": "Ankle Length", "img": "https://drive.google.com/thumbnail?id=1OLieSoN7mTCsUHc_dkp5w9pk54wfQOjd&sz=w400", "price": "₹80", "balance": 5, "in_stock": true}, {"code": "U/AL/004", "name": "Artengo ankle length black", "gender": "Unisex", "type": "Ankle Length", "img": "https://drive.google.com/thumbnail?id=1Ovhzz2IqeYNd2Pa5HFvahJpCg3Z6Ssza&sz=w400", "price": "₹60", "balance": 3, "in_stock": true}, {"code": "L/FL/001", "name": "Hanes absolute comfort socks", "gender": "Ladies", "type": "Full Length", "img": "https://drive.google.com/thumbnail?id=1NNXp9A9NGSxXukEY4HnY6QI_qNjBCJ65&sz=w400", "price": "₹90", "balance": 10, "in_stock": true}, {"code": "U/FL/002", "name": "Premium Diabetic socks", "gender": "Unisex", "type": "Full Length", "img": "https://drive.google.com/thumbnail?id=1SY_xKxt37jvVOgruOJmoKq7fz9jW2p7P&sz=w400", "price": "₹200", "balance": 2, "in_stock": true}, {"code": "U/AL/005", "name": "White ankle length hanes socks", "gender": "Unisex", "type": "Ankle Length", "img": "https://drive.google.com/thumbnail?id=19HBMJtSCi0VDep4Ye6Ih9EL5AFuUd4Eg&sz=w400", "price": "₹50", "balance": 6, "in_stock": true}, {"code": "L/AL/007", "name": "Ladies floral ankle length", "gender": "Ladies", "type": "Ankle Length", "img": "https://drive.google.com/thumbnail?id=11k70w5X2iryDiWUNNrri7BSmgw6THKGx&sz=w400", "price": "₹40", "balance": 19, "in_stock": true}, {"code": "L/AL/008", "name": "Ladies ankle length self design", "gender": "Ladies", "type": "Ankle Length", "img": "https://drive.google.com/thumbnail?id=1T3CGizmbb6E4CtQKnPa8baDCHhuF02j3&sz=w400", "price": "₹40", "balance": 15, "in_stock": true}, {"code": "L/AL/009", "name": "Ladies ankle length floral", "gender": "Ladies", "type": "Ankle Length", "img": "https://drive.google.com/thumbnail?id=1M3bJUVRQuu1bsJ-V52JIjQwqAjxH_ksM&sz=w400", "price": "₹40", "balance": 6, "in_stock": true}, {"code": "L/AL/010", "name": "Ladies Dark floral Ankle socks", "gender": "Ladies", "type": "Ankle Length", "img": "https://drive.google.com/thumbnail?id=1LqC6Ksa4n5D0QDmKvKME2tDV4SL8XRm2&sz=w400", "price": "₹50", "balance": 8, "in_stock": true}, {"code": "L/AL/011", "name": "Ladies ankle pastel", "gender": "Ladies", "type": "Ankle Length", "img": "https://drive.google.com/thumbnail?id=1yU6tJ7dmiyrXdcTvNeD-EuutkR5BMKRC&sz=w400", "price": "₹60", "balance": 17, "in_stock": true}, {"code": "L/BT/002", "name": "Ladies booties plain", "gender": "Ladies", "type": "Booties", "img": "https://drive.google.com/thumbnail?id=1yPKEiRA3HJtMdKSji4lSVnDn8vajvi4p&sz=w400", "price": "₹40", "balance": 5, "in_stock": true}, {"code": "L/FL/002", "name": "Ladies full length self plain design", "gender": "Ladies", "type": "Full Length", "img": "https://drive.google.com/thumbnail?id=1w0jjmfaOSOmVyIMJsBvuEJyEXYyM0ozr&sz=w400", "price": "₹40", "balance": 16, "in_stock": true}, {"code": "L/FL/003", "name": "Ladies full length self design plain top stripes", "gender": "Ladies", "type": "Full Length", "img": "https://drive.google.com/thumbnail?id=192NX1UmgjA6HRSH5gUol_9JN5psDBovO&sz=w400", "price": "₹40", "balance": 6, "in_stock": true}, {"code": "L/KD/002", "name": "Ladies ankle floral sports", "gender": "Kids", "type": "Kids", "img": "https://drive.google.com/thumbnail?id=1BGPHphW1bA_uVLsZmoexbohyAr3qFJgZ&sz=w400", "price": "₹40", "balance": 40, "in_stock": true}, {"code": "L/FL/004", "name": "Ladies full length plain self design", "gender": "Ladies", "type": "Full Length", "img": "https://drive.google.com/thumbnail?id=1yQ9OaJ8aeaQ0VgQpgcztyUhP1PFyGQtT&sz=w400", "price": "₹50", "balance": 16, "in_stock": true}, {"code": "L/AL/012", "name": "Ladies premium thun socks self design", "gender": "Ladies", "type": "Ankle Length", "img": "https://drive.google.com/thumbnail?id=1D-n8o0IPG6EF18onWRyb8peAgUwkP1bT&sz=w400", "price": "₹50", "balance": 9, "in_stock": true}, {"code": "U/AL/006", "name": "Unisex sports ankle length", "gender": "Unisex", "type": "Ankle Length", "img": "https://drive.google.com/thumbnail?id=1CMQ-ugGOsniTlb9mVwMLOReF7LMOaAIa&sz=w400", "price": "₹50", "balance": 26, "in_stock": true}, {"code": "L/AL/013", "name": "Hanes ankle length", "gender": "Ladies", "type": "Ankle Length", "img": "https://drive.google.com/thumbnail?id=1XFKhq2zSdlOe9C6KaPn53aLE9Ej1ATBX&sz=w400", "price": "₹80", "balance": 1, "in_stock": true}, {"code": "U/FM/001", "name": "Face mask 9 in 1", "gender": "Unisex", "type": "Face Mask", "img": "https://drive.google.com/thumbnail?id=1SiaE4TtEd1JIUHHY2iWT3pKKFJ8Drvlb&sz=w400", "price": "₹30", "balance": 10, "in_stock": true}, {"code": "U/KD/008", "name": "Kids Stripe Dark Colour size S", "gender": "Kids", "type": "Kids", "img": "https://drive.google.com/thumbnail?id=114LwFuAtmDbJmAAJVaG3ejhWDCi6MYYn&sz=w400", "price": "₹40", "balance": 7, "in_stock": true}, {"code": "U/KD/009", "name": "Kids Plain bow design size M", "gender": "Kids", "type": "Kids", "img": "https://drive.google.com/thumbnail?id=1zov5TGmk_y9bEf2NIwVsxmArxZbRvlIZ&sz=w400", "price": "₹40", "balance": 10, "in_stock": true}, {"code": "G/FL/004", "name": "MSB Size 6", "gender": "Gents", "type": "Full Length", "img": "", "price": "₹40", "balance": 11, "in_stock": true}, {"code": "G/FL/005", "name": "MSB Size free", "gender": "Gents", "type": "Full Length", "img": "", "price": "₹80", "balance": 12, "in_stock": true}, {"code": "G/FL/006", "name": "Full length thick sport finish", "gender": "Gents", "type": "Full Length", "img": "https://drive.google.com/thumbnail?id=1MKWVJ6LOrmIqmtQuYvr-lSR8_JzpF_01&sz=w400", "price": "₹40", "balance": 12, "in_stock": true}, {"code": "G/AL/007", "name": "Ankle length sporty thick", "gender": "Gents", "type": "Ankle Length", "img": "https://drive.google.com/thumbnail?id=1gJ0D-oUwHi17B1V0QAJHaj8DNFlAkD5T&sz=w400", "price": "₹40", "balance": 12, "in_stock": true}, {"code": "U/AL/007", "name": "White ankle length", "gender": "Unisex", "type": "Ankle Length", "img": "https://drive.google.com/thumbnail?id=1L6NVyweF9SZEjnCRZriBZpFtwoYErX3n&sz=w400", "price": "₹25", "balance": 10, "in_stock": true}, {"code": "U/CC/001", "name": "Black c cut socks", "gender": "Unisex", "type": "Cee Cut", "img": "https://drive.google.com/thumbnail?id=1c9lPGszBuxTk2OTFIxJR64QFX2_57AQF&sz=w400", "price": "₹25", "balance": 10, "in_stock": true}, {"code": "U/AL/008", "name": "Colourful unisex Ankle length", "gender": "Unisex", "type": "Ankle Length", "img": "https://drive.google.com/thumbnail?id=1czbk1nxXgDG7W4z3OSRtisWimBHLzduW&sz=w400", "price": "₹40", "balance": 30, "in_stock": true}, {"code": "G/AL/008", "name": "English style ankle length gents", "gender": "Gents", "type": "Ankle Length", "img": "https://drive.google.com/thumbnail?id=1uz5n4YRNhyaC3rnaGcphvD8XftFaZsLj&sz=w400", "price": "₹40", "balance": 19, "in_stock": true}, {"code": "G/AL/009", "name": "Double elastic dark colours", "gender": "Gents", "type": "Ankle Length", "img": "https://drive.google.com/thumbnail?id=1BUTk7xQXxpSTd0U26qj5bv0ipdT0Tw9G&sz=w400", "price": "₹30", "balance": 10, "in_stock": true}, {"code": "G/FL/007", "name": "Full length Gents Dark", "gender": "Gents", "type": "Full Length", "img": "https://drive.google.com/thumbnail?id=1UY14hDOHU6YZKJzTGC5-9ukRVc64hY0s&sz=w400", "price": "₹65", "balance": 20, "in_stock": true}, {"code": "G/AL/010", "name": "Black white grey stripe socks", "gender": "Gents", "type": "Ankle Length", "img": "https://drive.google.com/thumbnail?id=1vXxYwRxnkmRxlwtzVvN2PkS4NgyyW83G&sz=w400", "price": "₹35", "balance": 10, "in_stock": true}, {"code": "U/CC/002", "name": "Cee cut unisex stripes multicolour", "gender": "Unisex", "type": "Cee Cut", "img": "https://drive.google.com/thumbnail?id=1xt7hEJx3lqbm6NfsLBKolirWpsnyCdW0&sz=w400", "price": "₹50", "balance": 12, "in_stock": true}, {"code": "U/CC/003", "name": "Designer cee cut", "gender": "Unisex", "type": "Cee Cut", "img": "https://drive.google.com/thumbnail?id=14Lp-0iQnYGUVJcu9iMTDvwG6SdT5tRrM&sz=w400", "price": "₹40", "balance": 12, "in_stock": true}, {"code": "L/AL/014", "name": "Misc Ladies Ankle Length", "gender": "Ladies", "type": "Ankle Length", "img": "https://drive.google.com/thumbnail?id=1xt7hEJx3lqbm6NfsLBKolirWpsnyCdW0&sz=w400", "price": "₹40", "balance": 6, "in_stock": true}, {"code": "G/FL/008", "name": "Full white spandex gents", "gender": "Gents", "type": "Full Length", "img": "https://drive.google.com/thumbnail?id=13O9mNrZCRz-JK275CBtJtfpH-q70p4NN&sz=w400", "price": "₹100", "balance": 10, "in_stock": true}, {"code": "L/AL/015", "name": "Pastels ankle length with Bow", "gender": "Ladies", "type": "Ankle Length", "img": "https://drive.google.com/thumbnail?id=1yL_qczLP02kzonfB0257D7v8if_oU5VH&sz=w400", "price": "₹30", "balance": 10, "in_stock": true}, {"code": "L/CC/001", "name": "Ladies Cee cut pastels", "gender": "Ladies", "type": "Cee Cut", "img": "https://drive.google.com/thumbnail?id=1jgbQxRrHahToniX529jwnjpO6rhS_DA4&sz=w400", "price": "₹30", "balance": 10, "in_stock": true}, {"code": "U/CC/004", "name": "Strippy Cee Cut Unisex", "gender": "Unisex", "type": "Cee Cut", "img": "https://drive.google.com/thumbnail?id=1ZtgoZYh7yr_fNbD9RvmBW4LJj-BquJWT&sz=w400", "price": "₹30", "balance": 10, "in_stock": true}, {"code": "L/AL/016", "name": "Pastels ankle length with OKAY", "gender": "Ladies", "type": "Ankle Length", "img": "https://drive.google.com/thumbnail?id=16ZGorcc1uEYzEO-Nfagy7JwEThfaJKqp&sz=w400", "price": "₹30", "balance": 10, "in_stock": true}, {"code": "L/AL/017", "name": "Floral embroidery Ankle length", "gender": "Ladies", "type": "Ankle Length", "img": "https://drive.google.com/thumbnail?id=1G0xIZV1mqo7u6SIz5LuqGjxAn--eaKAI&sz=w400", "price": "₹30", "balance": 10, "in_stock": true}, {"code": "U/FL/003", "name": "Plain colours Full length S", "gender": "Unisex", "type": "Full Length", "img": "https://drive.google.com/thumbnail?id=1lBLq9zjf9w5jxusncmuT2d-K-6j9NIDM&sz=w400", "price": "₹50", "balance": 10, "in_stock": true}, {"code": "L/FL/005", "name": "Nike Ladies Full Length", "gender": "Ladies", "type": "Full Length", "img": "https://drive.google.com/thumbnail?id=1Vum4GLVn2GLd3K4yUbRbTMGNB-IO2ptl&sz=w400", "price": "₹40", "balance": 10, "in_stock": true}, {"code": "L/AL/018", "name": "Ladies Ankle Length Self Design Pastel", "gender": "Ladies", "type": "Ankle Length", "img": "https://drive.google.com/thumbnail?id=1hZrb0zV8fbBEXvzaGofq7NN2WVUy3pr6&sz=w400", "price": "₹30", "balance": 10, "in_stock": true}, {"code": "L/AL/019", "name": "Ladies Ankle Lenth Floral Embroidery", "gender": "Ladies", "type": "Ankle Length", "img": "https://drive.google.com/thumbnail?id=1zb_Xfeh7eTykAYLR-FL4unnj6UML-UWi&sz=w400", "price": "₹30", "balance": 7, "in_stock": true}, {"code": "L/AL/020", "name": "Dark coloured designer ladies", "gender": "Ladies", "type": "Ankle Length", "img": "https://drive.google.com/thumbnail?id=1i_emOsb0HviSoGC7w-sF8nE34pUtpF3d&sz=w400", "price": "₹30", "balance": 10, "in_stock": true}, {"code": "L/AL/021", "name": "Branded Ankle Length Net Socks", "gender": "Ladies", "type": "Ankle Length", "img": "https://drive.google.com/thumbnail?id=1BCQTecJ4z_3MmF4O3rr2uPL3kqe9i3lN&sz=w400", "price": "₹60", "balance": 9, "in_stock": true}, {"code": "L/AL/022", "name": "Ladies Net Socks with Pearls", "gender": "Ladies", "type": "Ankle Length", "img": "https://drive.google.com/thumbnail?id=15bOt0dj3QezylyXsMT3Hhwci7pAIMyh3&sz=w400", "price": "₹60", "balance": 11, "in_stock": true}, {"code": "G/AL/011", "name": "Gents Solid Colours Sprint Ankle Length", "gender": "Gents", "type": "Ankle Length", "img": "https://drive.google.com/thumbnail?id=1HTaQAo7fM_55avOcma8uvHJ09gqHkcvg&sz=w400", "price": "₹30", "balance": 10, "in_stock": true}, {"code": "U/BT/002", "name": "Designer spandex booties", "gender": "Unisex", "type": "Booties", "img": "https://drive.google.com/thumbnail?id=10IaR1kXx6LlQFJm8LCDVYWTHcazY6QEN&sz=w400", "price": "₹80", "balance": 12, "in_stock": true}, {"code": "U/BT/003", "name": "Spandex plain solid colour", "gender": "Unisex", "type": "Booties", "img": "https://drive.google.com/thumbnail?id=19oMgG9vGF5UfaGwEvd0gYAlPhNocBsFj&sz=w400", "price": "₹70", "balance": 12, "in_stock": true}, {"code": "L/BT/003", "name": "Ladies Solid Plain Booties", "gender": "Ladies", "type": "Booties", "img": "https://drive.google.com/thumbnail?id=1voYGbQv6wKykvXa963p0ThxNcQPV3R6v&sz=w400", "price": "₹60", "balance": 11, "in_stock": true}, {"code": "U/KD/010", "name": "Kids Antiskid Cute prints", "gender": "Kids", "type": "Kids", "img": "https://drive.google.com/thumbnail?id=1o3kXJK09Wixpw793Fj6MuAw0xOjUBHDP&sz=w400", "price": "₹60", "balance": 12, "in_stock": true}, {"code": "G/AL/012", "name": "Calvin Klein Nike dark", "gender": "Gents", "type": "Ankle Length", "img": "https://drive.google.com/thumbnail?id=1Lt_pcOD7vPs_vXMpt-7jE3fbN9RhSdFE&sz=w400", "price": "₹30", "balance": 20, "in_stock": true}, {"code": "G/FL/009", "name": "Self design dark solid colours", "gender": "Gents", "type": "Full Length", "img": "https://drive.google.com/thumbnail?id=132A-R_i5AlNFIqXQJZXxy6V48MwFMdCf&sz=w400", "price": "₹50", "balance": 10, "in_stock": true}, {"code": "U/AL/009", "name": "Branded Misc ankle style socks", "gender": "Unisex", "type": "Ankle Length", "img": "https://drive.google.com/thumbnail?id=1bgsSuZ4l1TzvAoBfHW9NwD3dOwtYm9O-&sz=w400", "price": "₹80", "balance": 16, "in_stock": true}, {"code": "G/FL/010", "name": "Full length formals", "gender": "Gents", "type": "Full Length", "img": "https://drive.google.com/thumbnail?id=1JcusP2lrcF5tXjHYR0EGU6xnuXFf-ytY&sz=w400", "price": "₹80", "balance": 12, "in_stock": true}, {"code": "L/FL/006", "name": "Pastels light full length", "gender": "Ladies", "type": "Full Length", "img": "https://drive.google.com/thumbnail?id=17WZ9tpDQ2XN9MzlsF8iTo7AziS8ZeYUd&sz=w400", "price": "₹45", "balance": 6, "in_stock": true}, {"code": "L/FL/007", "name": "Pastel dark self design", "gender": "Ladies", "type": "Full Length", "img": "https://drive.google.com/thumbnail?id=1O3quPO7v7c2OcwxhsUxToWRaxVnOh5l0&sz=w400", "price": "₹45", "balance": 17, "in_stock": true}, {"code": "G/AL/013", "name": "Men stripes ankle length", "gender": "Gents", "type": "Ankle Length", "img": "https://drive.google.com/thumbnail?id=1fHrKYO_hglveBBXigKRLQTfQTBibUnW2&sz=w400", "price": "₹90", "balance": 24, "in_stock": true}, {"code": "G/AL/014", "name": "Full cushion gents ankle length", "gender": "Gents", "type": "Ankle Length", "img": "https://drive.google.com/thumbnail?id=1gD0TQFO5pDMu3nLV6RTpWy_WnL-Yxtdh&sz=w400", "price": "₹110", "balance": 12, "in_stock": true}, {"code": "G/AL/015", "name": "Mini stripes men ankle length", "gender": "Gents", "type": "Ankle Length", "img": "https://drive.google.com/thumbnail?id=1qhFMhF6r9_XkQPf7WU-Az4hiLp9uRsOR&sz=w400", "price": "₹90", "balance": 12, "in_stock": true}, {"code": "G/AL/016", "name": "Cotton and lycra wavy design", "gender": "Gents", "type": "Ankle Length", "img": "https://drive.google.com/thumbnail?id=1aIRpYBfhDc_6WyGXdFNsBY1yQVxph0ph&sz=w400", "price": "₹90", "balance": 24, "in_stock": true}, {"code": "G/FL/011", "name": "Full length plain dark base", "gender": "Gents", "type": "Full Length", "img": "https://drive.google.com/thumbnail?id=1HkJGKvly_n9noOSvki5t-ozT2ZRLbwPn&sz=w400", "price": "₹90", "balance": 12, "in_stock": true}, {"code": "G/AL/017", "name": "Double elastic dotted base design", "gender": "Gents", "type": "Ankle Length", "img": "https://drive.google.com/thumbnail?id=1jlPjyPgj_F7FbTxpMPMIYI4WVF-zcMbS&sz=w400", "price": "₹90", "balance": 12, "in_stock": true}, {"code": "U/AL/010", "name": "Sporty double elastic multi design", "gender": "Unisex", "type": "Ankle Length", "img": "https://drive.google.com/thumbnail?id=1zsA8TSxWYBHa8-EWedQdFtAE1wu4H4ve&sz=w400", "price": "₹60", "balance": 50, "in_stock": true}, {"code": "L/AL/023", "name": "Sporty pastel stripes ladies", "gender": "Ladies", "type": "Ankle Length", "img": "https://drive.google.com/thumbnail?id=1XlLwCwN0usAxUq2YK87k4kZLmbccriHH&sz=w400", "price": "₹60", "balance": 10, "in_stock": true}, {"code": "U/KD/011", "name": "Furry Kids Nets Socks", "gender": "Kids", "type": "Kids", "img": "https://drive.google.com/thumbnail?id=17H7yyOjHkPSOwYSiU_v2Fzlbt82AS8B0&sz=w400", "price": "₹60", "balance": 12, "in_stock": true}, {"code": "U/KD/012", "name": "Kids Stars 3-6 years", "gender": "Kids", "type": "Kids", "img": "https://drive.google.com/thumbnail?id=1bajj4d4X86r499dREuikeVsFbdxhGIWG&sz=w400", "price": "₹30", "balance": 10, "in_stock": true}, {"code": "U/KD/013", "name": "Smiley kids booties", "gender": "Kids", "type": "Kids", "img": "https://drive.google.com/thumbnail?id=1kL3WpXqR-XL1zLbp4Hxqk0nUP-EMz2TU&sz=w400", "price": "₹30", "balance": 10, "in_stock": true}, {"code": "U/KD/014", "name": "Kids Designer Booties L Size", "gender": "Kids", "type": "Kids", "img": "https://drive.google.com/thumbnail?id=1UyLok24dX5grR2jjBXE-sN6Pvk8VTimm&sz=w400", "price": "₹30", "balance": 10, "in_stock": true}, {"code": "L/AL/024", "name": "Multi design pastel ladies ankle length", "gender": "Ladies", "type": "Ankle Length", "img": "https://drive.google.com/thumbnail?id=1NfHJCMDi8aqfKdH-NsFHxi9mVZ_B4Y2j&sz=w400", "price": "₹30", "balance": 30, "in_stock": true}, {"code": "L/KD/003", "name": "Kids lacy Pastel", "gender": "Kids", "type": "Kids", "img": "https://drive.google.com/thumbnail?id=1rO5AEMrO0N7igxijV6lLwzEIZ7z-Be5F&sz=w400", "price": "₹60", "balance": 36, "in_stock": true}, {"code": "L/AL/025", "name": "Nicer Ankle Lenth", "gender": "Ladies", "type": "Ankle Length", "img": "https://drive.google.com/thumbnail?id=1yvT_UM4HnRK2cpsJr-9zkP3prSgLiDwE&sz=w400", "price": "₹30", "balance": 20, "in_stock": true}, {"code": "U/KD/015", "name": "Kids Stars M Size", "gender": "Kids", "type": "Kids", "img": "https://drive.google.com/thumbnail?id=1Qe7gj23ZXERffxk2RlUov1l9vbmzvrLO&sz=w400", "price": "₹40", "balance": 19, "in_stock": true}, {"code": "U/KD/016", "name": "Kids different elastic 8-12", "gender": "Kids", "type": "Kids", "img": "https://drive.google.com/thumbnail?id=1QwslV4813fCfShNoHQ2NHBRsg01SnkCk&sz=w400", "price": "₹40", "balance": 60, "in_stock": true}, {"code": "U/KD/017", "name": "Ankle Length Scenery", "gender": "Kids", "type": "Kids", "img": "https://drive.google.com/thumbnail?id=1kowopLZXHjhI3qqu7dEif5oHxfgbndM6&sz=w400", "price": "₹30", "balance": 30, "in_stock": true}, {"code": "L/KD/004", "name": "Kids Frill Small", "gender": "Kids", "type": "Kids", "img": "https://drive.google.com/thumbnail?id=1CBlSE7VwdRIT7o15bqshgZ0FJHJjaRkB&sz=w400", "price": "₹40", "balance": 11, "in_stock": true}, {"code": "L/FL/008", "name": "Ladies Full Length Shine", "gender": "Ladies", "type": "Full Length", "img": "https://drive.google.com/thumbnail?id=1fW8HxN3eyCkgtqR6LARaqaBDID5ETPrb&sz=w400", "price": "₹50", "balance": 30, "in_stock": true}, {"code": "L/FL/009", "name": "Ladies Pastel Self Design Embroidery", "gender": "Ladies", "type": "Full Length", "img": "https://drive.google.com/thumbnail?id=1pKRn4OY17tp-mpjmUSS5-tmUrVFB2vdW&sz=w400", "price": "₹70", "balance": 20, "in_stock": true}, {"code": "L/AL/026", "name": "Ladies Net Ankle Length", "gender": "Ladies", "type": "Ankle Length", "img": "https://drive.google.com/thumbnail?id=1eVjCVtxcaN1EVaXADJ0OOthyXXf6X5vd&sz=w400", "price": "₹80", "balance": 46, "in_stock": true}, {"code": "L/BT/004", "name": "Ladies Booties Cotton Solid Colour", "gender": "Ladies", "type": "Booties", "img": "https://drive.google.com/thumbnail?id=12znY6ULwwJhva5ZGEvgHQsvl3bbXMjIv&sz=w400", "price": "₹50", "balance": 10, "in_stock": true}, {"code": "U/KD/018", "name": "Kids Anti Skid Car, keys", "gender": "Kids", "type": "Kids", "img": "https://drive.google.com/thumbnail?id=1HCNqw__Xm9bP-9Sm-RX5PHa_QK-NY22g&sz=w400", "price": "₹40", "balance": 40, "in_stock": true}, {"code": "U/KD/019", "name": "Kids Anti skid Faces", "gender": "Kids", "type": "Kids", "img": "https://drive.google.com/thumbnail?id=1wBq7D6nHF_Iv7B69wCUSso6t_iF7iRU4&sz=w400", "price": "₹50", "balance": 30, "in_stock": true}, {"code": "L/AL/027", "name": "Ladies self design multi colour ankle length", "gender": "Ladies", "type": "Ankle Length", "img": "https://drive.google.com/thumbnail?id=1qgYtISuyPYtGJnHgCbnrVmHNKINWCQ27&sz=w400", "price": "₹60", "balance": 30, "in_stock": true}, {"code": "G/AL/018", "name": "Ankle length white with dark base", "gender": "Gents", "type": "Ankle Length", "img": "https://drive.google.com/thumbnail?id=1nwlaLM3OzMvKqU10oTgD5d-SJx0LZfPV&sz=w400", "price": "₹50", "balance": 24, "in_stock": true}, {"code": "G/AL/019", "name": "Mens thick double elastic ankle length", "gender": "Gents", "type": "Ankle Length", "img": "https://drive.google.com/thumbnail?id=1f12jnW76oNukKH8ynS8ngwWXr2S_V7BU&sz=w400", "price": "₹40", "balance": 12, "in_stock": true}, {"code": "L/AL/028", "name": "Ladies Ankle Length Brown Neck", "gender": "Ladies", "type": "Ankle Length", "img": "https://drive.google.com/thumbnail?id=1tJLfEcRS9T3oBhtIVh9D4G9h1FtbuziE&sz=w400", "price": "₹50", "balance": 20, "in_stock": true}, {"code": "G/FL/012", "name": "Gents Full Length Plan and London", "gender": "Gents", "type": "Full Length", "img": "https://drive.google.com/thumbnail?id=1tDnlK6WAJPGcwfDCmHCAT29KAE0vA9yl&sz=w400", "price": "₹40", "balance": 30, "in_stock": true}, {"code": "G/AL/020", "name": "Ankle length sport", "gender": "Gents", "type": "Ankle Length", "img": "https://drive.google.com/thumbnail?id=1wyiOyv52qWgXQaHUaiRo2w7Yg-ncp_Xe&sz=w400", "price": "₹40", "balance": 12, "in_stock": true}, {"code": "G/AL/021", "name": "Ankle Lenght Big Strip Sporty", "gender": "Gents", "type": "Ankle Length", "img": "https://drive.google.com/thumbnail?id=1mnG9XF0yPEhoqVoDjEGegdaojxPfY1XX&sz=w400", "price": "₹40", "balance": 12, "in_stock": true}, {"code": "G/FL/013", "name": "Plain black full length", "gender": "Gents", "type": "Full Length", "img": "https://drive.google.com/thumbnail?id=1a-aozatudZaoWP-NqAP37gRVbdMPSwsw&sz=w400", "price": "₹30", "balance": 30, "in_stock": true}, {"code": "L/FL/010", "name": "TT-Dark Solid Full Length Ladies Checks", "gender": "Ladies", "type": "Full Length", "img": "https://drive.google.com/thumbnail?id=1i6Y6V78LHlk_WMYIwFlT9mNUSdJh1sGZ&sz=w400", "price": "₹70", "balance": 0, "in_stock": false}, {"code": "L/FL/011", "name": "Zari Plain Multicolour Ladies", "gender": "Ladies", "type": "Full Length", "img": "https://drive.google.com/thumbnail?id=1JWJXA4iR8a3GCOY9_PlNDRW3qrqU_3iF&sz=w400", "price": "₹70", "balance": 0, "in_stock": false}, {"code": "U/BT/004", "name": "Spandex Booties", "gender": "Unisex", "type": "Booties", "img": "https://drive.google.com/thumbnail?id=15g6FGuWvq20vgTRJRVtcv05qASN8-_ZY&sz=w400", "price": "₹80", "balance": 0, "in_stock": false}, {"code": "L/BT/005", "name": "Booties - Netted", "gender": "Ladies", "type": "Booties", "img": "https://drive.google.com/thumbnail?id=1R7kpbGOzcdObmaWdOdyk5QXIrPjzRYrY&sz=w400", "price": "₹80", "balance": 0, "in_stock": false}, {"code": "U/BT/005", "name": "Premium antiskid unisex booties", "gender": "Unisex", "type": "Booties", "img": "https://drive.google.com/thumbnail?id=1JRwFqhOChVOjFoB7OC-L51XEJ_hz7vYx&sz=w400", "price": "₹90", "balance": 0, "in_stock": false}];
+const ALL_PRODUCTS = [{"code": "L/AL/001", "name": "Ladies Floral ankle", "gender": "Ladies", "type": "Ankle Length", "img": "https://drive.google.com/thumbnail?id=18ZLSJH1O06L4-Mp2r57SFdk5oE9hThRt&sz=w400", "price": "₹50", "balance": 0, "in_stock": false}, {"code": "L/BT/001", "name": "Ladies Booties Plain", "gender": "Ladies", "type": "Booties", "img": "https://drive.google.com/thumbnail?id=1sC-NXgdqWl0gG-IxtD8ywOkKRu9QyW-k&sz=w400", "price": "₹35", "balance": 1, "in_stock": true}, {"code": "G/BT/001", "name": "Gents booties design", "gender": "Gents", "type": "Booties", "img": "https://drive.google.com/thumbnail?id=1G9jGrCsQWEmrbrSrhX4XEIassP8lLwP8&sz=w400", "price": "₹30", "balance": 8, "in_stock": true}, {"code": "L/AL/002", "name": "Ladies ankle length plain with smiley", "gender": "Ladies", "type": "Ankle Length", "img": "https://drive.google.com/thumbnail?id=1cxscSvlFo6lyNEKGeFy8BhDrvYJWmaBz&sz=w400", "price": "₹50", "balance": 5, "in_stock": true}, {"code": "L/AL/003", "name": "Designer socks", "gender": "Ladies", "type": "Ankle Length", "img": "", "price": "₹60", "balance": 2, "in_stock": true}, {"code": "G/AL/001", "name": "Sporty look Ankle length", "gender": "Gents", "type": "Ankle Length", "img": "https://drive.google.com/thumbnail?id=1TdQ6QeoHNmuurz74K3LOZxRl4C9W-NAo&sz=w400", "price": "₹50", "balance": 0, "in_stock": false}, {"code": "L/AL/004", "name": "Ladies Net Black ankle length", "gender": "Ladies", "type": "Ankle Length", "img": "https://drive.google.com/thumbnail?id=1sJDqOxIluCdQN6YfDoadYy4WsTw2Ctt2&sz=w400", "price": "₹70", "balance": 8, "in_stock": true}, {"code": "L/AL/005", "name": "Floral design rose", "gender": "Ladies", "type": "Ankle Length", "img": "https://drive.google.com/thumbnail?id=10nHAdjinMvTKvdXHAm_dNkd9Xq3GgCY9&sz=w400", "price": "₹40", "balance": 4, "in_stock": true}, {"code": "U/FL/001", "name": "Plain full length", "gender": "Unisex", "type": "Full Length", "img": "https://drive.google.com/thumbnail?id=1_bNZA9AaoOOpE_2fHUG49FCxDsncLYbV&sz=w400", "price": "₹50", "balance": 1, "in_stock": true}, {"code": "U/SL/001", "name": "Black sleeves", "gender": "Unisex", "type": "Sleeves", "img": "https://drive.google.com/thumbnail?id=14zr7y-1hLT4QJWWws5xF9N-BFroZVkc4&sz=w400", "price": "₹60", "balance": 8, "in_stock": true}, {"code": "U/AL/001", "name": "White design Ankle", "gender": "Unisex", "type": "Ankle Length", "img": "https://drive.google.com/thumbnail?id=1y07wBbPSUYXohiMPYip3PlbKC3NNH3YO&sz=w400", "price": "₹50", "balance": 5, "in_stock": true}, {"code": "U/SL/002", "name": "Beige sleeves rider", "gender": "Unisex", "type": "Sleeves", "img": "https://drive.google.com/thumbnail?id=1yQ41InkcF4-KA3pN2AeYefgAzjqa-oW7&sz=w400", "price": "₹70", "balance": 3, "in_stock": true}, {"code": "G/FL/001", "name": "Gents full length white with different base", "gender": "Gents", "type": "Full Length", "img": "https://drive.google.com/thumbnail?id=1mYaYorREJ5H_wh53hrKw42MLDNSjAOEz&sz=w400", "price": "₹70", "balance": 0, "in_stock": false}, {"code": "G/FL/002", "name": "Gents base colour style", "gender": "Gents", "type": "Full Length", "img": "https://drive.google.com/thumbnail?id=1atzzx7NC7Z3EzUbQJT_nb436Zuom3JOH&sz=w400", "price": "₹70", "balance": 3, "in_stock": true}, {"code": "G/FL/003", "name": "Heavy grade design", "gender": "Gents", "type": "Full Length", "img": "https://drive.google.com/thumbnail?id=1vBGZBl9jdvxnXshVUxqBZwmf2uNBbSC-&sz=w400", "price": "₹120", "balance": 0, "in_stock": false}, {"code": "G/AL/002", "name": "Checks style", "gender": "Gents", "type": "Ankle Length", "img": "https://drive.google.com/thumbnail?id=1moEOTcSm49qCasxhQx4_M1bYEz_j3tqk&sz=w400", "price": "₹70", "balance": 0, "in_stock": false}, {"code": "L/AL/006", "name": "Ladies ankle length silicon", "gender": "Ladies", "type": "Ankle Length", "img": "https://drive.google.com/thumbnail?id=1hHkW-OoAPj-HPotNOwCXYKUq4X7NdLOw&sz=w400", "price": "₹70", "balance": 0, "in_stock": false}, {"code": "U/SS/001", "name": "Woolen multicolour slipper", "gender": "Unisex", "type": "Slipper Socks", "img": "https://drive.google.com/thumbnail?id=1NSw3SNyTxrPWTZjii9eQuwsmdOgei3qF&sz=w400", "price": "₹40", "balance": 9, "in_stock": true}, {"code": "U/KD/001", "name": "Kids full length socks", "gender": "Kids", "type": "Kids", "img": "https://drive.google.com/thumbnail?id=1qFJUAVv2gRkIMOKweh0Z_I6pPYLvXaiz&sz=w400", "price": "₹50", "balance": 1, "in_stock": true}, {"code": "U/BT/001", "name": "Plain solid colour booties", "gender": "Unisex", "type": "Booties", "img": "https://drive.google.com/thumbnail?id=17fLiME3G7TSUjWis5JJrAW-AuCMTCDcF&sz=w400", "price": "₹90", "balance": 11, "in_stock": true}, {"code": "U/KD/002", "name": "Kids anti slip colourful", "gender": "Kids", "type": "Kids", "img": "https://drive.google.com/thumbnail?id=1fiL6As1HY0863oMFmiFlkIfvCDUf4UjJ&sz=w400", "price": "₹50", "balance": 2, "in_stock": true}, {"code": "U/KD/003", "name": "Colourful full length", "gender": "Kids", "type": "Kids", "img": "https://drive.google.com/thumbnail?id=1ouDrEhKf8e-fvWEdJNyy1AaZQt6UYpF8&sz=w400", "price": "₹50", "balance": 6, "in_stock": true}, {"code": "U/AL/002", "name": "Boots style socks", "gender": "Unisex", "type": "Ankle Length", "img": "https://drive.google.com/thumbnail?id=1A2MU1lT9QetmxyBlyJXpm1NrFj-2GVK5&sz=w400", "price": "₹60", "balance": 7, "in_stock": true}, {"code": "L/LG/001", "name": "Plain white leggings", "gender": "Ladies", "type": "Leggings", "img": "https://drive.google.com/thumbnail?id=1zhZeH0Aaf1bocAt1zws6cnF4hvG_UxhD&sz=w400", "price": "₹110", "balance": 6, "in_stock": true}, {"code": "L/KD/001", "name": "Small child socks", "gender": "Kids", "type": "Kids", "img": "https://drive.google.com/thumbnail?id=1p2ZsiQFG08AUc0kSibXt0_8w1lznlkkc&sz=w400", "price": "₹50", "balance": 7, "in_stock": true}, {"code": "U/AL/003", "name": "Shoe lace multicolour socks", "gender": "Unisex", "type": "Ankle Length", "img": "https://drive.google.com/thumbnail?id=1Pm3W1LyXNrOYCrFhuE-6AXhHmYxOvPA5&sz=w400", "price": "₹30", "balance": 10, "in_stock": true}, {"code": "U/KD/004", "name": "Kids 0-2 pair", "gender": "Kids", "type": "Kids", "img": "https://drive.google.com/thumbnail?id=1G18LRRFwOBcrz6NWRmzTYXzepryY1WEx&sz=w400", "price": "₹70", "balance": 8, "in_stock": true}, {"code": "U/KD/005", "name": "Giraffe style kids socks 2-5", "gender": "Kids", "type": "Kids", "img": "https://drive.google.com/thumbnail?id=1Dp2ZcbRJMg7tdXfeUJQcKpjjyfBNiE62&sz=w400", "price": "₹50", "balance": 8, "in_stock": true}, {"code": "U/KD/006", "name": "Giraffe kids 6-9", "gender": "Kids", "type": "Kids", "img": "https://drive.google.com/thumbnail?id=1jMy-YV71FLZvalOojVODyWFsfHN_N6Z1&sz=w400", "price": "₹50", "balance": 6, "in_stock": true}, {"code": "U/KD/007", "name": "Pack of 2 socks for kids baby socks", "gender": "Kids", "type": "Kids", "img": "https://drive.google.com/thumbnail?id=1AwqusGbscFh7wo2ka7NSpKtTdqzqaYzL&sz=w400", "price": "₹80", "balance": 6, "in_stock": true}, {"code": "G/AL/003", "name": "Hanes ankle length Blue", "gender": "Gents", "type": "Ankle Length", "img": "https://drive.google.com/thumbnail?id=13FS6ok2hC4XddpgP_VYFC0-IYkzIiwJy&sz=w400", "price": "₹80", "balance": 6, "in_stock": true}, {"code": "G/AL/004", "name": "Hanes Ankle length Black", "gender": "Gents", "type": "Ankle Length", "img": "https://drive.google.com/thumbnail?id=1JXqssawgh-bPYPQpjUOkF24ckJnqyjOV&sz=w400", "price": "₹80", "balance": 6, "in_stock": true}, {"code": "G/AL/005", "name": "Hanes Ankle length Navy Blue", "gender": "Gents", "type": "Ankle Length", "img": "https://drive.google.com/thumbnail?id=1iBJYl-dxdl5Wj0y6bzhJgH2fUSwepLZT&sz=w400", "price": "₹70", "balance": 6, "in_stock": true}, {"code": "G/AL/006", "name": "Hanes Ankle length grey", "gender": "Gents", "type": "Ankle Length", "img": "https://drive.google.com/thumbnail?id=1OLieSoN7mTCsUHc_dkp5w9pk54wfQOjd&sz=w400", "price": "₹80", "balance": 5, "in_stock": true}, {"code": "U/AL/004", "name": "Artengo ankle length black", "gender": "Unisex", "type": "Ankle Length", "img": "https://drive.google.com/thumbnail?id=1Ovhzz2IqeYNd2Pa5HFvahJpCg3Z6Ssza&sz=w400", "price": "₹60", "balance": 3, "in_stock": true}, {"code": "L/FL/001", "name": "Hanes absolute comfort socks", "gender": "Ladies", "type": "Full Length", "img": "https://drive.google.com/thumbnail?id=1NNXp9A9NGSxXukEY4HnY6QI_qNjBCJ65&sz=w400", "price": "₹90", "balance": 10, "in_stock": true}, {"code": "U/FL/002", "name": "Premium Diabetic socks", "gender": "Unisex", "type": "Full Length", "img": "https://drive.google.com/thumbnail?id=1SY_xKxt37jvVOgruOJmoKq7fz9jW2p7P&sz=w400", "price": "₹200", "balance": 2, "in_stock": true}, {"code": "U/AL/005", "name": "White ankle length hanes socks", "gender": "Unisex", "type": "Ankle Length", "img": "https://drive.google.com/thumbnail?id=19HBMJtSCi0VDep4Ye6Ih9EL5AFuUd4Eg&sz=w400", "price": "₹50", "balance": 6, "in_stock": true}, {"code": "L/AL/007", "name": "Ladies floral ankle length", "gender": "Ladies", "type": "Ankle Length", "img": "https://drive.google.com/thumbnail?id=11k70w5X2iryDiWUNNrri7BSmgw6THKGx&sz=w400", "price": "₹40", "balance": 19, "in_stock": true}, {"code": "L/AL/008", "name": "Ladies ankle length self design", "gender": "Ladies", "type": "Ankle Length", "img": "https://drive.google.com/thumbnail?id=1T3CGizmbb6E4CtQKnPa8baDCHhuF02j3&sz=w400", "price": "₹40", "balance": 15, "in_stock": true}, {"code": "L/AL/009", "name": "Ladies ankle length floral", "gender": "Ladies", "type": "Ankle Length", "img": "https://drive.google.com/thumbnail?id=1M3bJUVRQuu1bsJ-V52JIjQwqAjxH_ksM&sz=w400", "price": "₹40", "balance": 6, "in_stock": true}, {"code": "L/AL/010", "name": "Ladies Dark floral Ankle socks", "gender": "Ladies", "type": "Ankle Length", "img": "https://drive.google.com/thumbnail?id=1LqC6Ksa4n5D0QDmKvKME2tDV4SL8XRm2&sz=w400", "price": "₹50", "balance": 8, "in_stock": true}, {"code": "L/AL/011", "name": "Ladies ankle pastel", "gender": "Ladies", "type": "Ankle Length", "img": "https://drive.google.com/thumbnail?id=1yU6tJ7dmiyrXdcTvNeD-EuutkR5BMKRC&sz=w400", "price": "₹60", "balance": 17, "in_stock": true}, {"code": "L/BT/002", "name": "Ladies booties plain", "gender": "Ladies", "type": "Booties", "img": "https://drive.google.com/thumbnail?id=1yPKEiRA3HJtMdKSji4lSVnDn8vajvi4p&sz=w400", "price": "₹40", "balance": 5, "in_stock": true}, {"code": "L/FL/002", "name": "Ladies full length self plain design", "gender": "Ladies", "type": "Full Length", "img": "https://drive.google.com/thumbnail?id=1w0jjmfaOSOmVyIMJsBvuEJyEXYyM0ozr&sz=w400", "price": "₹40", "balance": 16, "in_stock": true}, {"code": "L/FL/003", "name": "Ladies full length self design plain top stripes", "gender": "Ladies", "type": "Full Length", "img": "https://drive.google.com/thumbnail?id=192NX1UmgjA6HRSH5gUol_9JN5psDBovO&sz=w400", "price": "₹40", "balance": 6, "in_stock": true}, {"code": "L/KD/002", "name": "Ladies ankle floral sports", "gender": "Kids", "type": "Kids", "img": "https://drive.google.com/thumbnail?id=1BGPHphW1bA_uVLsZmoexbohyAr3qFJgZ&sz=w400", "price": "₹40", "balance": 40, "in_stock": true}, {"code": "L/FL/004", "name": "Ladies full length plain self design", "gender": "Ladies", "type": "Full Length", "img": "https://drive.google.com/thumbnail?id=1yQ9OaJ8aeaQ0VgQpgcztyUhP1PFyGQtT&sz=w400", "price": "₹50", "balance": 16, "in_stock": true}, {"code": "L/AL/012", "name": "Ladies premium thun socks self design", "gender": "Ladies", "type": "Ankle Length", "img": "https://drive.google.com/thumbnail?id=1D-n8o0IPG6EF18onWRyb8peAgUwkP1bT&sz=w400", "price": "₹50", "balance": 9, "in_stock": true}, {"code": "U/AL/006", "name": "Unisex sports ankle length", "gender": "Unisex", "type": "Ankle Length", "img": "https://drive.google.com/thumbnail?id=1CMQ-ugGOsniTlb9mVwMLOReF7LMOaAIa&sz=w400", "price": "₹50", "balance": 26, "in_stock": true}, {"code": "L/AL/013", "name": "Hanes ankle length", "gender": "Ladies", "type": "Ankle Length", "img": "https://drive.google.com/thumbnail?id=1XFKhq2zSdlOe9C6KaPn53aLE9Ej1ATBX&sz=w400", "price": "₹80", "balance": 1, "in_stock": true}, {"code": "U/FM/001", "name": "Face mask 9 in 1", "gender": "Unisex", "type": "Face Mask", "img": "https://drive.google.com/thumbnail?id=1SiaE4TtEd1JIUHHY2iWT3pKKFJ8Drvlb&sz=w400", "price": "₹30", "balance": 10, "in_stock": true}, {"code": "U/KD/008", "name": "Kids Stripe Dark Colour size S", "gender": "Kids", "type": "Kids", "img": "https://drive.google.com/thumbnail?id=114LwFuAtmDbJmAAJVaG3ejhWDCi6MYYn&sz=w400", "price": "₹40", "balance": 7, "in_stock": true}, {"code": "U/KD/009", "name": "Kids Plain bow design size M", "gender": "Kids", "type": "Kids", "img": "https://drive.google.com/thumbnail?id=1zov5TGmk_y9bEf2NIwVsxmArxZbRvlIZ&sz=w400", "price": "₹40", "balance": 10, "in_stock": true}, {"code": "G/FL/004", "name": "MSB Size 6", "gender": "Gents", "type": "Full Length", "img": "", "price": "₹40", "balance": 11, "in_stock": true}, {"code": "G/FL/005", "name": "MSB Size free", "gender": "Gents", "type": "Full Length", "img": "", "price": "₹80", "balance": 12, "in_stock": true}, {"code": "G/FL/006", "name": "Full length thick sport finish", "gender": "Gents", "type": "Full Length", "img": "https://drive.google.com/thumbnail?id=1MKWVJ6LOrmIqmtQuYvr-lSR8_JzpF_01&sz=w400", "price": "₹40", "balance": 12, "in_stock": true}, {"code": "G/AL/007", "name": "Ankle length sporty thick", "gender": "Gents", "type": "Ankle Length", "img": "https://drive.google.com/thumbnail?id=1gJ0D-oUwHi17B1V0QAJHaj8DNFlAkD5T&sz=w400", "price": "₹40", "balance": 12, "in_stock": true}, {"code": "U/AL/007", "name": "White ankle length", "gender": "Unisex", "type": "Ankle Length", "img": "https://drive.google.com/thumbnail?id=1L6NVyweF9SZEjnCRZriBZpFtwoYErX3n&sz=w400", "price": "₹25", "balance": 10, "in_stock": true}, {"code": "U/CC/001", "name": "Black c cut socks", "gender": "Unisex", "type": "Cee Cut", "img": "https://drive.google.com/thumbnail?id=1c9lPGszBuxTk2OTFIxJR64QFX2_57AQF&sz=w400", "price": "₹25", "balance": 10, "in_stock": true}, {"code": "U/AL/008", "name": "Colourful unisex Ankle length", "gender": "Unisex", "type": "Ankle Length", "img": "https://drive.google.com/thumbnail?id=1czbk1nxXgDG7W4z3OSRtisWimBHLzduW&sz=w400", "price": "₹40", "balance": 30, "in_stock": true}, {"code": "G/AL/008", "name": "English style ankle length gents", "gender": "Gents", "type": "Ankle Length", "img": "https://drive.google.com/thumbnail?id=1uz5n4YRNhyaC3rnaGcphvD8XftFaZsLj&sz=w400", "price": "₹40", "balance": 19, "in_stock": true}, {"code": "G/AL/009", "name": "Double elastic dark colours", "gender": "Gents", "type": "Ankle Length", "img": "https://drive.google.com/thumbnail?id=1BUTk7xQXxpSTd0U26qj5bv0ipdT0Tw9G&sz=w400", "price": "₹30", "balance": 10, "in_stock": true}, {"code": "G/FL/007", "name": "Full length Gents Dark", "gender": "Gents", "type": "Full Length", "img": "https://drive.google.com/thumbnail?id=1UY14hDOHU6YZKJzTGC5-9ukRVc64hY0s&sz=w400", "price": "₹65", "balance": 20, "in_stock": true}, {"code": "G/AL/010", "name": "Black white grey stripe socks", "gender": "Gents", "type": "Ankle Length", "img": "https://drive.google.com/thumbnail?id=1vXxYwRxnkmRxlwtzVvN2PkS4NgyyW83G&sz=w400", "price": "₹35", "balance": 10, "in_stock": true}, {"code": "U/CC/002", "name": "Cee cut unisex stripes multicolour", "gender": "Unisex", "type": "Cee Cut", "img": "https://drive.google.com/thumbnail?id=1xt7hEJx3lqbm6NfsLBKolirWpsnyCdW0&sz=w400", "price": "₹50", "balance": 12, "in_stock": true}, {"code": "U/CC/003", "name": "Designer cee cut", "gender": "Unisex", "type": "Cee Cut", "img": "https://drive.google.com/thumbnail?id=14Lp-0iQnYGUVJcu9iMTDvwG6SdT5tRrM&sz=w400", "price": "₹40", "balance": 12, "in_stock": true}, {"code": "L/AL/014", "name": "Misc Ladies Ankle Length", "gender": "Ladies", "type": "Ankle Length", "img": "https://drive.google.com/thumbnail?id=1xt7hEJx3lqbm6NfsLBKolirWpsnyCdW0&sz=w400", "price": "₹40", "balance": 6, "in_stock": true}, {"code": "G/FL/008", "name": "Full white spandex gents", "gender": "Gents", "type": "Full Length", "img": "https://drive.google.com/thumbnail?id=13O9mNrZCRz-JK275CBtJtfpH-q70p4NN&sz=w400", "price": "₹100", "balance": 10, "in_stock": true}, {"code": "L/AL/015", "name": "Pastels ankle length with Bow", "gender": "Ladies", "type": "Ankle Length", "img": "https://drive.google.com/thumbnail?id=1yL_qczLP02kzonfB0257D7v8if_oU5VH&sz=w400", "price": "₹30", "balance": 10, "in_stock": true}, {"code": "L/CC/001", "name": "Ladies Cee cut pastels", "gender": "Ladies", "type": "Cee Cut", "img": "https://drive.google.com/thumbnail?id=1jgbQxRrHahToniX529jwnjpO6rhS_DA4&sz=w400", "price": "₹30", "balance": 10, "in_stock": true}, {"code": "U/CC/004", "name": "Strippy Cee Cut Unisex", "gender": "Unisex", "type": "Cee Cut", "img": "https://drive.google.com/thumbnail?id=1ZtgoZYh7yr_fNbD9RvmBW4LJj-BquJWT&sz=w400", "price": "₹30", "balance": 10, "in_stock": true}, {"code": "L/AL/016", "name": "Pastels ankle length with OKAY", "gender": "Ladies", "type": "Ankle Length", "img": "https://drive.google.com/thumbnail?id=16ZGorcc1uEYzEO-Nfagy7JwEThfaJKqp&sz=w400", "price": "₹30", "balance": 10, "in_stock": true}, {"code": "L/AL/017", "name": "Floral embroidery Ankle length", "gender": "Ladies", "type": "Ankle Length", "img": "https://drive.google.com/thumbnail?id=1G0xIZV1mqo7u6SIz5LuqGjxAn--eaKAI&sz=w400", "price": "₹30", "balance": 10, "in_stock": true}, {"code": "U/FL/003", "name": "Plain colours Full length S", "gender": "Unisex", "type": "Full Length", "img": "https://drive.google.com/thumbnail?id=1lBLq9zjf9w5jxusncmuT2d-K-6j9NIDM&sz=w400", "price": "₹50", "balance": 10, "in_stock": true}, {"code": "L/FL/005", "name": "Nike Ladies Full Length", "gender": "Ladies", "type": "Full Length", "img": "https://drive.google.com/thumbnail?id=1Vum4GLVn2GLd3K4yUbRbTMGNB-IO2ptl&sz=w400", "price": "₹40", "balance": 10, "in_stock": true}, {"code": "L/AL/018", "name": "Ladies Ankle Length Self Design Pastel", "gender": "Ladies", "type": "Ankle Length", "img": "https://drive.google.com/thumbnail?id=1hZrb0zV8fbBEXvzaGofq7NN2WVUy3pr6&sz=w400", "price": "₹30", "balance": 10, "in_stock": true}, {"code": "L/AL/019", "name": "Ladies Ankle Lenth Floral Embroidery", "gender": "Ladies", "type": "Ankle Length", "img": "https://drive.google.com/thumbnail?id=1zb_Xfeh7eTykAYLR-FL4unnj6UML-UWi&sz=w400", "price": "₹30", "balance": 7, "in_stock": true}, {"code": "L/AL/020", "name": "Dark coloured designer ladies", "gender": "Ladies", "type": "Ankle Length", "img": "https://drive.google.com/thumbnail?id=1i_emOsb0HviSoGC7w-sF8nE34pUtpF3d&sz=w400", "price": "₹30", "balance": 10, "in_stock": true}, {"code": "L/AL/021", "name": "Branded Ankle Length Net Socks", "gender": "Ladies", "type": "Ankle Length", "img": "https://drive.google.com/thumbnail?id=1BCQTecJ4z_3MmF4O3rr2uPL3kqe9i3lN&sz=w400", "price": "₹60", "balance": 9, "in_stock": true}, {"code": "L/AL/022", "name": "Ladies Net Socks with Pearls", "gender": "Ladies", "type": "Ankle Length", "img": "https://drive.google.com/thumbnail?id=15bOt0dj3QezylyXsMT3Hhwci7pAIMyh3&sz=w400", "price": "₹60", "balance": 11, "in_stock": true}, {"code": "G/AL/011", "name": "Gents Solid Colours Sprint Ankle Length", "gender": "Gents", "type": "Ankle Length", "img": "https://drive.google.com/thumbnail?id=1HTaQAo7fM_55avOcma8uvHJ09gqHkcvg&sz=w400", "price": "₹30", "balance": 10, "in_stock": true}, {"code": "U/BT/002", "name": "Designer spandex booties", "gender": "Unisex", "type": "Booties", "img": "https://drive.google.com/thumbnail?id=10IaR1kXx6LlQFJm8LCDVYWTHcazY6QEN&sz=w400", "price": "₹80", "balance": 12, "in_stock": true}, {"code": "U/BT/003", "name": "Spandex plain solid colour", "gender": "Unisex", "type": "Booties", "img": "https://drive.google.com/thumbnail?id=19oMgG9vGF5UfaGwEvd0gYAlPhNocBsFj&sz=w400", "price": "₹70", "balance": 12, "in_stock": true}, {"code": "L/BT/003", "name": "Ladies Solid Plain Booties", "gender": "Ladies", "type": "Booties", "img": "https://drive.google.com/thumbnail?id=1voYGbQv6wKykvXa963p0ThxNcQPV3R6v&sz=w400", "price": "₹60", "balance": 11, "in_stock": true}, {"code": "U/KD/010", "name": "Kids Antiskid Cute prints", "gender": "Kids", "type": "Kids", "img": "https://drive.google.com/thumbnail?id=1o3kXJK09Wixpw793Fj6MuAw0xOjUBHDP&sz=w400", "price": "₹60", "balance": 12, "in_stock": true}, {"code": "G/AL/012", "name": "Calvin Klein Nike dark", "gender": "Gents", "type": "Ankle Length", "img": "https://drive.google.com/thumbnail?id=1Lt_pcOD7vPs_vXMpt-7jE3fbN9RhSdFE&sz=w400", "price": "₹30", "balance": 20, "in_stock": true}, {"code": "G/FL/009", "name": "Self design dark solid colours", "gender": "Gents", "type": "Full Length", "img": "https://drive.google.com/thumbnail?id=132A-R_i5AlNFIqXQJZXxy6V48MwFMdCf&sz=w400", "price": "₹50", "balance": 10, "in_stock": true}, {"code": "U/AL/009", "name": "Branded Misc ankle style socks", "gender": "Unisex", "type": "Ankle Length", "img": "https://drive.google.com/thumbnail?id=1bgsSuZ4l1TzvAoBfHW9NwD3dOwtYm9O-&sz=w400", "price": "₹80", "balance": 16, "in_stock": true}, {"code": "G/FL/010", "name": "Full length formals", "gender": "Gents", "type": "Full Length", "img": "https://drive.google.com/thumbnail?id=1JcusP2lrcF5tXjHYR0EGU6xnuXFf-ytY&sz=w400", "price": "₹80", "balance": 12, "in_stock": true}, {"code": "L/FL/006", "name": "Pastels light full length", "gender": "Ladies", "type": "Full Length", "img": "https://drive.google.com/thumbnail?id=17WZ9tpDQ2XN9MzlsF8iTo7AziS8ZeYUd&sz=w400", "price": "₹45", "balance": 6, "in_stock": true}, {"code": "L/FL/007", "name": "Pastel dark self design", "gender": "Ladies", "type": "Full Length", "img": "https://drive.google.com/thumbnail?id=1O3quPO7v7c2OcwxhsUxToWRaxVnOh5l0&sz=w400", "price": "₹45", "balance": 17, "in_stock": true}, {"code": "G/AL/013", "name": "Men stripes ankle length", "gender": "Gents", "type": "Ankle Length", "img": "https://drive.google.com/thumbnail?id=1fHrKYO_hglveBBXigKRLQTfQTBibUnW2&sz=w400", "price": "₹90", "balance": 24, "in_stock": true}, {"code": "G/AL/014", "name": "Full cushion gents ankle length", "gender": "Gents", "type": "Ankle Length", "img": "https://drive.google.com/thumbnail?id=1gD0TQFO5pDMu3nLV6RTpWy_WnL-Yxtdh&sz=w400", "price": "₹110", "balance": 12, "in_stock": true}, {"code": "G/AL/015", "name": "Mini stripes men ankle length", "gender": "Gents", "type": "Ankle Length", "img": "https://drive.google.com/thumbnail?id=1qhFMhF6r9_XkQPf7WU-Az4hiLp9uRsOR&sz=w400", "price": "₹90", "balance": 12, "in_stock": true}, {"code": "G/AL/016", "name": "Cotton and lycra wavy design", "gender": "Gents", "type": "Ankle Length", "img": "https://drive.google.com/thumbnail?id=1aIRpYBfhDc_6WyGXdFNsBY1yQVxph0ph&sz=w400", "price": "₹90", "balance": 24, "in_stock": true}, {"code": "G/FL/011", "name": "Full length plain dark base", "gender": "Gents", "type": "Full Length", "img": "https://drive.google.com/thumbnail?id=1HkJGKvly_n9noOSvki5t-ozT2ZRLbwPn&sz=w400", "price": "₹90", "balance": 12, "in_stock": true}, {"code": "G/AL/017", "name": "Double elastic dotted base design", "gender": "Gents", "type": "Ankle Length", "img": "https://drive.google.com/thumbnail?id=1jlPjyPgj_F7FbTxpMPMIYI4WVF-zcMbS&sz=w400", "price": "₹90", "balance": 12, "in_stock": true}, {"code": "U/AL/010", "name": "Sporty double elastic multi design", "gender": "Unisex", "type": "Ankle Length", "img": "https://drive.google.com/thumbnail?id=1zsA8TSxWYBHa8-EWedQdFtAE1wu4H4ve&sz=w400", "price": "₹60", "balance": 50, "in_stock": true}, {"code": "L/AL/023", "name": "Sporty pastel stripes ladies", "gender": "Ladies", "type": "Ankle Length", "img": "https://drive.google.com/thumbnail?id=1XlLwCwN0usAxUq2YK87k4kZLmbccriHH&sz=w400", "price": "₹60", "balance": 10, "in_stock": true}, {"code": "U/KD/011", "name": "Furry Kids Nets Socks", "gender": "Kids", "type": "Kids", "img": "https://drive.google.com/thumbnail?id=17H7yyOjHkPSOwYSiU_v2Fzlbt82AS8B0&sz=w400", "price": "₹60", "balance": 12, "in_stock": true}, {"code": "U/KD/012", "name": "Kids Stars 3-6 years", "gender": "Kids", "type": "Kids", "img": "https://drive.google.com/thumbnail?id=1bajj4d4X86r499dREuikeVsFbdxhGIWG&sz=w400", "price": "₹30", "balance": 10, "in_stock": true}, {"code": "U/KD/013", "name": "Smiley kids booties", "gender": "Kids", "type": "Kids", "img": "https://drive.google.com/thumbnail?id=1kL3WpXqR-XL1zLbp4Hxqk0nUP-EMz2TU&sz=w400", "price": "₹30", "balance": 10, "in_stock": true}, {"code": "U/KD/014", "name": "Kids Designer Booties L Size", "gender": "Kids", "type": "Kids", "img": "https://drive.google.com/thumbnail?id=1UyLok24dX5grR2jjBXE-sN6Pvk8VTimm&sz=w400", "price": "₹30", "balance": 10, "in_stock": true}, {"code": "L/AL/024", "name": "Multi design pastel ladies ankle length", "gender": "Ladies", "type": "Ankle Length", "img": "https://drive.google.com/thumbnail?id=1NfHJCMDi8aqfKdH-NsFHxi9mVZ_B4Y2j&sz=w400", "price": "₹30", "balance": 30, "in_stock": true}, {"code": "L/KD/003", "name": "Kids lacy Pastel", "gender": "Kids", "type": "Kids", "img": "https://drive.google.com/thumbnail?id=1rO5AEMrO0N7igxijV6lLwzEIZ7z-Be5F&sz=w400", "price": "₹60", "balance": 36, "in_stock": true}, {"code": "L/AL/025", "name": "Nicer Ankle Lenth", "gender": "Ladies", "type": "Ankle Length", "img": "https://drive.google.com/thumbnail?id=1yvT_UM4HnRK2cpsJr-9zkP3prSgLiDwE&sz=w400", "price": "₹30", "balance": 20, "in_stock": true}, {"code": "U/KD/015", "name": "Kids Stars M Size", "gender": "Kids", "type": "Kids", "img": "https://drive.google.com/thumbnail?id=1Qe7gj23ZXERffxk2RlUov1l9vbmzvrLO&sz=w400", "price": "₹40", "balance": 19, "in_stock": true}, {"code": "U/KD/016", "name": "Kids different elastic 8-12", "gender": "Kids", "type": "Kids", "img": "https://drive.google.com/thumbnail?id=1QwslV4813fCfShNoHQ2NHBRsg01SnkCk&sz=w400", "price": "₹40", "balance": 60, "in_stock": true}, {"code": "U/KD/017", "name": "Ankle Length Scenery", "gender": "Kids", "type": "Kids", "img": "https://drive.google.com/thumbnail?id=1kowopLZXHjhI3qqu7dEif5oHxfgbndM6&sz=w400", "price": "₹30", "balance": 30, "in_stock": true}, {"code": "L/KD/004", "name": "Kids Frill Small", "gender": "Kids", "type": "Kids", "img": "https://drive.google.com/thumbnail?id=1CBlSE7VwdRIT7o15bqshgZ0FJHJjaRkB&sz=w400", "price": "₹40", "balance": 11, "in_stock": true}, {"code": "L/FL/008", "name": "Ladies Full Length Shine", "gender": "Ladies", "type": "Full Length", "img": "https://drive.google.com/thumbnail?id=1fW8HxN3eyCkgtqR6LARaqaBDID5ETPrb&sz=w400", "price": "₹50", "balance": 30, "in_stock": true}, {"code": "L/FL/009", "name": "Ladies Pastel Self Design Embroidery", "gender": "Ladies", "type": "Full Length", "img": "https://drive.google.com/thumbnail?id=1pKRn4OY17tp-mpjmUSS5-tmUrVFB2vdW&sz=w400", "price": "₹70", "balance": 20, "in_stock": true}, {"code": "L/AL/026", "name": "Ladies Net Ankle Length", "gender": "Ladies", "type": "Ankle Length", "img": "https://drive.google.com/thumbnail?id=1eVjCVtxcaN1EVaXADJ0OOthyXXf6X5vd&sz=w400", "price": "₹80", "balance": 46, "in_stock": true}, {"code": "L/BT/004", "name": "Ladies Booties Cotton Solid Colour", "gender": "Ladies", "type": "Booties", "img": "https://drive.google.com/thumbnail?id=12znY6ULwwJhva5ZGEvgHQsvl3bbXMjIv&sz=w400", "price": "₹50", "balance": 10, "in_stock": true}, {"code": "U/KD/018", "name": "Kids Anti Skid Car, keys", "gender": "Kids", "type": "Kids", "img": "https://drive.google.com/thumbnail?id=1HCNqw__Xm9bP-9Sm-RX5PHa_QK-NY22g&sz=w400", "price": "₹40", "balance": 40, "in_stock": true}, {"code": "U/KD/019", "name": "Kids Anti skid Faces", "gender": "Kids", "type": "Kids", "img": "https://drive.google.com/thumbnail?id=1wBq7D6nHF_Iv7B69wCUSso6t_iF7iRU4&sz=w400", "price": "₹50", "balance": 30, "in_stock": true}, {"code": "L/AL/027", "name": "Ladies self design multi colour ankle length", "gender": "Ladies", "type": "Ankle Length", "img": "https://drive.google.com/thumbnail?id=1qgYtISuyPYtGJnHgCbnrVmHNKINWCQ27&sz=w400", "price": "₹60", "balance": 30, "in_stock": true}, {"code": "G/AL/018", "name": "Ankle length white with dark base", "gender": "Gents", "type": "Ankle Length", "img": "https://drive.google.com/thumbnail?id=1nwlaLM3OzMvKqU10oTgD5d-SJx0LZfPV&sz=w400", "price": "₹50", "balance": 24, "in_stock": true}, {"code": "G/AL/019", "name": "Mens thick double elastic ankle length", "gender": "Gents", "type": "Ankle Length", "img": "https://drive.google.com/thumbnail?id=1f12jnW76oNukKH8ynS8ngwWXr2S_V7BU&sz=w400", "price": "₹40", "balance": 12, "in_stock": true}, {"code": "L/AL/028", "name": "Ladies Ankle Length Brown Neck", "gender": "Ladies", "type": "Ankle Length", "img": "https://drive.google.com/thumbnail?id=1tJLfEcRS9T3oBhtIVh9D4G9h1FtbuziE&sz=w400", "price": "₹50", "balance": 20, "in_stock": true}, {"code": "G/FL/012", "name": "Gents Full Length Plan and London", "gender": "Gents", "type": "Full Length", "img": "https://drive.google.com/thumbnail?id=1tDnlK6WAJPGcwfDCmHCAT29KAE0vA9yl&sz=w400", "price": "₹40", "balance": 30, "in_stock": true}, {"code": "G/AL/020", "name": "Ankle length sport", "gender": "Gents", "type": "Ankle Length", "img": "https://drive.google.com/thumbnail?id=1wyiOyv52qWgXQaHUaiRo2w7Yg-ncp_Xe&sz=w400", "price": "₹40", "balance": 12, "in_stock": true}, {"code": "G/AL/021", "name": "Ankle Lenght Big Strip Sporty", "gender": "Gents", "type": "Ankle Length", "img": "https://drive.google.com/thumbnail?id=1mnG9XF0yPEhoqVoDjEGegdaojxPfY1XX&sz=w400", "price": "₹40", "balance": 12, "in_stock": true}, {"code": "G/FL/013", "name": "Plain black full length", "gender": "Gents", "type": "Full Length", "img": "https://drive.google.com/thumbnail?id=1a-aozatudZaoWP-NqAP37gRVbdMPSwsw&sz=w400", "price": "₹30", "balance": 30, "in_stock": true}, {"code": "L/FL/010", "name": "TT-Dark Solid Full Length Ladies Checks", "gender": "Ladies", "type": "Full Length", "img": "https://drive.google.com/thumbnail?id=1i6Y6V78LHlk_WMYIwFlT9mNUSdJh1sGZ&sz=w400", "price": "₹70", "balance": 0, "in_stock": false}, {"code": "L/FL/011", "name": "Zari Plain Multicolour Ladies", "gender": "Ladies", "type": "Full Length", "img": "https://drive.google.com/thumbnail?id=1JWJXA4iR8a3GCOY9_PlNDRW3qrqU_3iF&sz=w400", "price": "₹70", "balance": 0, "in_stock": false}, {"code": "U/BT/004", "name": "Spandex Booties", "gender": "Unisex", "type": "Booties", "img": "https://drive.google.com/thumbnail?id=15g6FGuWvq20vgTRJRVtcv05qASN8-_ZY&sz=w400", "price": "₹80", "balance": 0, "in_stock": false}, {"code": "L/BT/005", "name": "Booties - Netted", "gender": "Ladies", "type": "Booties", "img": "https://drive.google.com/thumbnail?id=1R7kpbGOzcdObmaWdOdyk5QXIrPjzRYrY&sz=w400", "price": "₹80", "balance": 0, "in_stock": false}, {"code": "U/BT/005", "name": "Premium antiskid unisex booties", "gender": "Unisex", "type": "Booties", "img": "https://drive.google.com/thumbnail?id=1JRwFqhOChVOjFoB7OC-L51XEJ_hz7vYx&sz=w400", "price": "₹90", "balance": 0, "in_stock": false}];
+const PRODUCTS = ALL_PRODUCTS.filter(function(p){ return p.in_stock; });
 
 const GENDER_EMOJI = {Ladies:'👩',Gents:'👔',Unisex:'🤝',Kids:'🧒'};
-const TYPE_LABELS  = {'Ankle Length':'Ankle','Booties':'Booties','Full Length':'Full Length','Sleeves':'Sleeves','Slipper Socks':'Slipper','Kids':'Kids','Leggings':'Leggings','Face Mask':'Face Mask','Cee Cut':'Cee Cut'};
+const TYPE_LABELS  = {'Ankle Length':'Ankle','Booties':'Booties','Full Length':'Full Length',
+  'Sleeves':'Sleeves','Slipper Socks':'Slipper','Kids':'Kids',
+  'Leggings':'Leggings','Face Mask':'Face Mask','Cee Cut':'Cee Cut'};
 
-let activeGender = 'all';
-let activeType   = 'all';
-let inStockOnly  = false;
-let searchQuery  = '';
+// Formsubmit endpoints
+const FS_PRIMARY = 'https://formsubmit.co/ajax/mslatewalla@gmail.com';
+const FS_CC      = 'qslatewala@gmail.com,smbcollections5253@gmail.com';
+
+var activeGender = 'all', activeType = 'all', searchQuery = '';
 
 function getTypes(gender) {
-  const ps = gender === 'all' ? PRODUCTS : PRODUCTS.filter(p => p.gender === gender);
-  const types = [...new Set(ps.map(p => p.type))].sort();
-  return types;
+  var ps = gender === 'all' ? PRODUCTS : PRODUCTS.filter(function(p){ return p.gender === gender; });
+  var types = [];
+  ps.forEach(function(p){ if (types.indexOf(p.type) === -1) types.push(p.type); });
+  return types.sort();
 }
 
 function renderTypeFilters() {
-  const tf = document.getElementById('typeFilters');
-  const types = getTypes(activeGender);
-  tf.innerHTML = '<button class="type-btn '+(activeType==='all'?'active':'')+'" data-t="all">All Types</button>'
-    + types.map(t => `<button class="type-btn ${activeType===t?'active':''} " data-t="${t}">${TYPE_LABELS[t]||t}</button>`).join('');
-  tf.querySelectorAll('.type-btn').forEach(b => b.addEventListener('click',()=>{
-    activeType = b.dataset.t;
-    renderTypeFilters();
-    renderProducts();
-  }));
+  var tf = document.getElementById('typeFilters');
+  var types = getTypes(activeGender);
+  var html = '<button class="type-btn ' + (activeType==='all'?'active':'') + '" data-t="all">All Types</button>';
+  types.forEach(function(t){
+    html += '<button class="type-btn ' + (activeType===t?'active':'') + '" data-t="' + t + '">' + (TYPE_LABELS[t]||t) + '</button>';
+  });
+  tf.innerHTML = html;
+  tf.querySelectorAll('.type-btn').forEach(function(b){
+    b.addEventListener('click', function(){
+      activeType = b.dataset.t;
+      renderTypeFilters();
+      renderProducts();
+    });
+  });
 }
 
 function renderProducts() {
-  let ps = PRODUCTS;
-  if(activeGender !== 'all') ps = ps.filter(p => p.gender === activeGender);
-  if(activeType   !== 'all') ps = ps.filter(p => p.type   === activeType);
-  if(inStockOnly)            ps = ps.filter(p => p.in_stock);
-  if(searchQuery)            ps = ps.filter(p => (p.name+p.code+p.type).toLowerCase().includes(searchQuery));
+  var ps = PRODUCTS;
+  if (activeGender !== 'all') ps = ps.filter(function(p){ return p.gender === activeGender; });
+  if (activeType   !== 'all') ps = ps.filter(function(p){ return p.type   === activeType; });
+  if (searchQuery)            ps = ps.filter(function(p){ return (p.name+p.code+p.type).toLowerCase().indexOf(searchQuery) !== -1; });
 
-  const inS = ps.filter(p=>p.in_stock).length;
-  document.getElementById('catalogMeta').textContent = `Showing ${ps.length} product${ps.length!==1?'s':''} · ${inS} in stock`;
+  document.getElementById('catalogMeta').textContent = ps.length + ' product' + (ps.length !== 1 ? 's' : '') + ' available';
 
-  const grid = document.getElementById('catalogGrid');
-  if(ps.length === 0) {
-    grid.innerHTML = '<div class="no-results"><h3>No products found</h3><p>Try changing your filters.</p></div>';
+  var grid = document.getElementById('catalogGrid');
+  if (ps.length === 0) {
+    grid.innerHTML = '<div class="no-results"><h3>No products found</h3><p>Try a different filter or search.</p></div>';
     return;
   }
 
-  grid.innerHTML = ps.map(p => {
-    const badgeClass = 'badge-'+p.gender.toLowerCase();
-    const stockClass = p.in_stock ? 'stock-in' : 'stock-out';
-    const stockText  = p.in_stock ? `In Stock (${p.balance})` : 'Out of Stock';
-    const imgHtml = p.img
-      ? `<img src="${p.img}" alt="${p.name}" loading="lazy" onerror="this.parentElement.innerHTML='<div class=card-img-fallback>🧦</div>'">`
-      : `<div class="card-img-fallback">🧦</div>`;
-    return `
-    <div class="card reveal ${p.in_stock?'':'out-of-stock'}">
-      <div class="card-img">
-        ${imgHtml}
-        <span class="card-gender-badge ${badgeClass}">${GENDER_EMOJI[p.gender]||''} ${p.gender}</span>
-        <span class="stock-dot ${p.in_stock?'dot-in':'dot-out'}"></span>
-      </div>
-      <div class="card-body">
-        <div class="card-code">${p.code}</div>
-        <div class="card-name">${p.name}</div>
-        <div class="card-type">${p.type}</div>
-        <div class="card-footer">
-          <span class="card-price">${p.price}</span>
-          <span class="card-stock ${stockClass}">${stockText}</span>
-        </div>
-      </div>
-    </div>`;
-  }).join('');
+  var html = '';
+  ps.forEach(function(p) {
+    var badgeClass = 'badge-' + p.gender.toLowerCase();
+    var imgHtml = p.img
+      ? '<img src="' + p.img + '" alt="' + p.name + '" loading="lazy"/>'
+      : '<div class="card-img-fallback">🧦</div>';
+    html += '<div class="card reveal">'
+      + '<div class="card-img">'
+      + imgHtml
+      + '<span class="card-gender-badge ' + badgeClass + '">' + (GENDER_EMOJI[p.gender]||'') + ' ' + p.gender + '</span>'
+      + '</div>'
+      + '<div class="card-body">'
+      + '<div class="card-code">' + p.code + '</div>'
+      + '<div class="card-name">' + p.name + '</div>'
+      + '<div class="card-type">' + p.type + '</div>'
+      + '<div class="card-footer">'
+      + '<span class="card-price">' + p.price + '</span>'
+      + '<button class="enquire-btn" data-code="' + p.code + '">Enquire</button>'
+      + '</div></div></div>';
+  });
+  grid.innerHTML = html;
+
+  // Attach enquire buttons using data attributes — no inline onclick needed
+  grid.querySelectorAll('.enquire-btn').forEach(function(btn) {
+    btn.addEventListener('click', function() {
+      var code = btn.dataset.code;
+      var product = PRODUCTS.find(function(p){ return p.code === code; });
+      if (product) openEnquiry(product);
+    });
+  });
 
   observeReveal();
 }
 
-// Stats
-const inStockCount = PRODUCTS.filter(p=>p.in_stock).length;
-document.getElementById('statTotal').textContent = PRODUCTS.length;
-document.getElementById('statInStock').textContent = inStockCount;
+/* ── MODAL ── */
+function openEnquiry(p) {
+  var img = document.getElementById('modalImg');
+  img.src = p.img || '';
+  img.style.display = p.img ? 'block' : 'none';
+  document.getElementById('modalName').textContent  = p.name;
+  document.getElementById('modalCode').textContent  = p.code;
+  document.getElementById('modalPrice').textContent = p.price;
+  document.getElementById('enquiryForm').style.display = 'flex';
+  document.getElementById('formSuccess').style.display  = 'none';
+  var btn = document.getElementById('enquirySubmitBtn');
+  btn.disabled = false;
+  btn.textContent = 'Send Enquiry';
+  // Store current product on the form for submission
+  document.getElementById('enquiryForm').dataset.code  = p.code;
+  document.getElementById('enquiryForm').dataset.name  = p.name;
+  document.getElementById('enquiryForm').dataset.price = p.price;
+  document.getElementById('modalOverlay').classList.add('open');
+  document.body.style.overflow = 'hidden';
+  gtag('event', 'enquiry_open', {product_code: p.code});
+}
 
-// Gender filters
-document.getElementById('genderFilters').addEventListener('click', e => {
-  const btn = e.target.closest('[data-g]');
-  if(!btn) return;
+function closeModal() {
+  document.getElementById('modalOverlay').classList.remove('open');
+  document.body.style.overflow = '';
+}
+
+document.getElementById('modalClose').addEventListener('click', closeModal);
+document.getElementById('modalOverlay').addEventListener('click', function(e) {
+  if (e.target === document.getElementById('modalOverlay')) closeModal();
+});
+
+/* ── PRODUCT ENQUIRY SUBMIT ── */
+document.getElementById('enquiryForm').addEventListener('submit', function(e) {
+  e.preventDefault();
+  var form = e.target;
+  var btn  = document.getElementById('enquirySubmitBtn');
+  btn.disabled = true;
+  btn.textContent = 'Sending…';
+
+  var payload = {
+    _subject:  'Product Enquiry: ' + form.dataset.name + ' (' + form.dataset.code + ')',
+    _cc:       FS_CC,
+    _captcha:  'false',
+    _template: 'table',
+    Product:   form.dataset.name,
+    Code:      form.dataset.code,
+    Price:     form.dataset.price,
+    Name:      form.name.value,
+    Email:     form.email.value,
+    Phone:     form.phone.value,
+    Quantity:  form.quantity.value,
+    Message:   form.message.value
+  };
+
+  fetch(FS_PRIMARY, {
+    method:  'POST',
+    headers: {'Content-Type': 'application/json', 'Accept': 'application/json'},
+    body:    JSON.stringify(payload)
+  })
+  .then(function(r){ return r.json(); })
+  .then(function() {
+    document.getElementById('enquiryForm').style.display = 'none';
+    document.getElementById('formSuccess').style.display = 'block';
+    form.reset();
+    gtag('event', 'enquiry_submitted', {product_code: form.dataset.code});
+  })
+  .catch(function() {
+    btn.disabled = false;
+    btn.textContent = 'Send Enquiry';
+    alert('Something went wrong. Please try again or contact us directly.');
+  });
+});
+
+/* ── GENERAL CONTACT SUBMIT ── */
+document.getElementById('generalForm').addEventListener('submit', function(e) {
+  e.preventDefault();
+  var form = e.target;
+  var btn  = document.getElementById('genSubmitBtn');
+  var msg  = document.getElementById('genFormMsg');
+  btn.disabled = true;
+  btn.textContent = 'Sending…';
+
+  var payload = {
+    _subject:  'General Enquiry – SMB Collection',
+    _cc:       FS_CC,
+    _captcha:  'false',
+    _template: 'table',
+    Name:    form.name.value,
+    Email:   form.email.value,
+    Phone:   form.phone.value,
+    Message: form.message.value
+  };
+
+  fetch(FS_PRIMARY, {
+    method:  'POST',
+    headers: {'Content-Type': 'application/json', 'Accept': 'application/json'},
+    body:    JSON.stringify(payload)
+  })
+  .then(function(r){ return r.json(); })
+  .then(function() {
+    msg.textContent  = '✓ Message sent! We will be in touch soon.';
+    msg.style.color  = 'var(--gold)';
+    msg.style.display = 'block';
+    form.reset();
+    gtag('event', 'general_enquiry_submitted');
+  })
+  .catch(function() {
+    msg.textContent  = 'Something went wrong. Please try again.';
+    msg.style.color  = '#e88';
+    msg.style.display = 'block';
+  })
+  .finally(function() {
+    btn.disabled = false;
+    btn.textContent = 'Send Message';
+  });
+});
+
+/* ── GENDER FILTERS ── */
+document.getElementById('genderFilters').addEventListener('click', function(e) {
+  var btn = e.target.closest('[data-g]');
+  if (!btn) return;
   activeGender = btn.dataset.g;
-  activeType = 'all';
-  document.querySelectorAll('[data-g]').forEach(b=>b.classList.remove('active'));
+  activeType   = 'all';
+  document.querySelectorAll('[data-g]').forEach(function(b){ b.classList.remove('active'); });
   btn.classList.add('active');
   renderTypeFilters();
   renderProducts();
+  gtag('event', 'filter_gender', {gender: activeGender});
 });
 
-// In stock checkbox
-document.getElementById('inStockOnly').addEventListener('change', e=>{
-  inStockOnly = e.target.checked;
-  renderProducts();
-});
-
-// Search
-document.getElementById('searchBox').addEventListener('input', e=>{
+/* ── SEARCH ── */
+document.getElementById('searchBox').addEventListener('input', function(e) {
   searchQuery = e.target.value.trim().toLowerCase();
   renderProducts();
 });
 
-// Hamburger
-document.getElementById('burger').addEventListener('click',()=>document.getElementById('navLinks').classList.toggle('open'));
-
-// Contact form
-document.getElementById('contactForm').addEventListener('submit', e=>{
-  e.preventDefault();
-  document.getElementById('formMsg').style.display='block';
-  e.target.reset();
+/* ── HAMBURGER ── */
+document.getElementById('burger').addEventListener('click', function() {
+  document.getElementById('navLinks').classList.toggle('open');
 });
 
-// Scroll reveal
-function observeReveal(){
-  const io = new IntersectionObserver(entries=>entries.forEach(e=>{
-    if(e.isIntersecting){e.target.classList.add('visible');io.unobserve(e.target);}
-  }),{threshold:0.08});
-  document.querySelectorAll('.reveal:not(.visible)').forEach(el=>io.observe(el));
+/* ── SCROLL REVEAL ── */
+function observeReveal() {
+  var io = new IntersectionObserver(function(entries) {
+    entries.forEach(function(e) {
+      if (e.isIntersecting) { e.target.classList.add('visible'); io.unobserve(e.target); }
+    });
+  }, {threshold: 0.08});
+  document.querySelectorAll('.reveal:not(.visible)').forEach(function(el){ io.observe(el); });
 }
 
-// Init
+/* ── INIT ── */
+gtag('event', 'page_view');
 renderTypeFilters();
 renderProducts();
 observeReveal();
