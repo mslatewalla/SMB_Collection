@@ -226,6 +226,17 @@
     #searchBox{padding:.42rem .9rem;border:1px solid var(--warm);background:transparent;font-family:'Raleway',sans-serif;font-size:.72rem;color:var(--text);outline:none;width:180px;transition:border .25s}
     #searchBox:focus{border-color:var(--gold)}
 
+    /* PRICE FILTER */
+    .price-filter{display:flex;align-items:center;gap:.75rem;flex-wrap:wrap;margin-top:.6rem}
+    .price-filter label{font-size:.65rem;letter-spacing:.15em;text-transform:uppercase;color:var(--muted);white-space:nowrap}
+    .price-range-track{position:relative;width:160px;height:4px;background:var(--warm);border-radius:2px}
+    .price-range-fill{position:absolute;height:100%;background:var(--gold);border-radius:2px;pointer-events:none}
+    .price-range-track input[type=range]{position:absolute;width:100%;height:100%;opacity:0;cursor:pointer;margin:0;top:0;left:0}
+    .price-thumb{position:absolute;top:50%;transform:translate(-50%,-50%);width:14px;height:14px;border-radius:50%;background:var(--gold);border:2px solid var(--white);box-shadow:0 1px 4px rgba(0,0,0,.2);pointer-events:none}
+    .price-vals{font-size:.68rem;color:var(--navy);font-family:'Cormorant Garamond',serif;font-weight:600;white-space:nowrap}
+    .price-reset{font-size:.6rem;letter-spacing:.1em;text-transform:uppercase;color:var(--muted);background:none;border:none;cursor:pointer;padding:.2rem .4rem;text-decoration:underline}
+    .price-reset:hover{color:var(--navy)}
+
     /* PRODUCT CARD */
     .card{background:var(--cream);overflow:hidden;transition:transform .3s,box-shadow .3s;position:relative}
     .card:hover{transform:translateY(-4px);box-shadow:0 18px 36px rgba(26,16,64,.11)}
@@ -252,6 +263,18 @@
     .enquire-btn:hover{border-color:var(--navy);color:var(--navy)}
     .add-cart-btn{border-color:var(--gold);color:var(--gold);background:transparent}
     .add-cart-btn:hover,.add-cart-btn.in-cart{background:var(--gold);color:var(--navy)}
+
+    /* ZOOM MODAL */
+    .zoom-overlay{display:none;position:fixed;inset:0;background:rgba(5,3,15,.92);z-index:600;align-items:center;justify-content:center;padding:1.5rem;cursor:zoom-out;backdrop-filter:blur(8px)}
+    .zoom-overlay.open{display:flex}
+    .zoom-container{position:relative;max-width:min(85vw,700px);max-height:85vh}
+    .zoom-container img{width:100%;height:100%;object-fit:contain;border:1px solid rgba(201,168,76,.2);box-shadow:0 30px 80px rgba(0,0,0,.7)}
+    .zoom-info{position:absolute;bottom:0;left:0;right:0;padding:.75rem 1rem;background:linear-gradient(to top,rgba(10,6,30,.95),transparent);text-align:center}
+    .zoom-name{font-family:'Cormorant Garamond',serif;font-size:1.1rem;color:var(--cream);font-weight:600}
+    .zoom-code{font-size:.6rem;letter-spacing:.15em;color:rgba(201,168,76,.6);text-transform:uppercase;margin-top:.2rem}
+    .zoom-close{position:absolute;top:-2.5rem;right:0;background:none;border:none;color:rgba(245,237,214,.6);font-size:1.5rem;cursor:pointer;padding:.25rem .5rem}
+    .zoom-close:hover{color:var(--gold)}
+    .zoom-hint{position:absolute;top:.6rem;right:.6rem;background:rgba(10,6,30,.7);color:rgba(245,237,214,.5);font-size:.55rem;letter-spacing:.12em;text-transform:uppercase;padding:.2rem .55rem;border:1px solid rgba(201,168,76,.15);border-radius:1px;pointer-events:none}
 
     /* NO RESULTS */
     .no-results{text-align:center;padding:4rem 2rem;grid-column:1/-1}
@@ -456,7 +479,24 @@
       </div>
       <div class="type-filters" id="typeFilters"></div>
     </div>
-    <input id="searchBox" type="text" placeholder="Search products…"/>
+    <div style="display:flex;flex-direction:column;gap:.5rem;align-items:flex-end">
+      <input id="searchBox" type="text" placeholder="Search products…"/>
+      <div class="price-filter">
+        <label>Price</label>
+        <div style="position:relative;display:flex;align-items:center;gap:.5rem">
+          <span class="price-vals" id="priceValMin">₹0</span>
+          <div class="price-range-track" id="priceTrack">
+            <div class="price-range-fill" id="priceFill"></div>
+            <div class="price-thumb" id="thumbMin"></div>
+            <div class="price-thumb" id="thumbMax"></div>
+            <input type="range" id="rangeMin" min="0" max="500" value="0" step="10"/>
+            <input type="range" id="rangeMax" min="0" max="500" value="500" step="10"/>
+          </div>
+          <span class="price-vals" id="priceValMax">₹500</span>
+        </div>
+        <button class="price-reset" id="priceReset">Reset</button>
+      </div>
+    </div>
   </div>
   <div class="catalog-meta" id="catalogMeta"></div>
   <div class="catalog-grid" id="catalogGrid"></div>
@@ -568,6 +608,19 @@
 <!-- Sync status pill -->
 <div id="syncStatus"></div>
 
+<!-- ZOOM MODAL -->
+<div class="zoom-overlay" id="zoomOverlay">
+  <div class="zoom-container">
+    <button class="zoom-close" id="zoomClose">✕</button>
+    <img id="zoomImg" src="" alt=""/>
+    <div class="zoom-info">
+      <div class="zoom-name" id="zoomName"></div>
+      <div class="zoom-code" id="zoomCode"></div>
+    </div>
+    <div class="zoom-hint">Click anywhere to close</div>
+  </div>
+</div>
+
 <script>
 // ═══════════════════════════════════════════════════════
 //  CONFIG — Paste your published Google Sheets CSV URL below
@@ -588,6 +641,7 @@ var FALLBACK_PRODUCTS = [{"code": "L/AL/001", "name": "Ladies Floral ankle", "ge
 var allProducts = [];
 var cart = []; // [{code, name, price, priceNum, img, qty}]
 var activeGender = 'all', activeType = 'all', searchQuery = '';
+var priceMin = 0, priceMax = 500, PRICE_MAX_GLOBAL = 500;
 var swiperInstance = null;
 
 var GENDER_EMOJI = {Ladies:'👩',Gents:'👔',Unisex:'🤝',Kids:'🧒'};
@@ -699,6 +753,17 @@ function init() {
 }
 
 function renderAll() {
+  // Compute global price max from in-stock products
+  var prices = allProducts.filter(function(p){ return p.in_stock && p.priceNum > 0; }).map(function(p){ return p.priceNum; });
+  if (prices.length) {
+    PRICE_MAX_GLOBAL = Math.ceil(Math.max.apply(null, prices) / 10) * 10;
+    priceMax = PRICE_MAX_GLOBAL;
+    var rMin = document.getElementById('rangeMin');
+    var rMax = document.getElementById('rangeMax');
+    if (rMin) { rMin.max = PRICE_MAX_GLOBAL; rMin.value = 0; }
+    if (rMax) { rMax.max = PRICE_MAX_GLOBAL; rMax.value = PRICE_MAX_GLOBAL; }
+    updatePriceUI();
+  }
   renderCarousel();
   renderTypeFilters();
   renderProducts();
@@ -865,6 +930,7 @@ function renderProducts() {
   if (activeGender!=='all') ps=ps.filter(function(p){return p.gender===activeGender;});
   if (activeType!=='all')   ps=ps.filter(function(p){return p.type===activeType;});
   if (searchQuery)          ps=ps.filter(function(p){return(p.name+p.code+p.type).toLowerCase().indexOf(searchQuery)!==-1;});
+  ps=ps.filter(function(p){return p.priceNum===0||(p.priceNum>=priceMin&&p.priceNum<=priceMax);});
 
   document.getElementById('catalogMeta').textContent=ps.length+' product'+(ps.length!==1?'s':'')+' available';
 
@@ -878,14 +944,23 @@ function renderProducts() {
   ps.forEach(function(p){
     var bc='badge-'+p.gender.toLowerCase();
     var isInCart=inCartCodes.indexOf(p.code)!==-1;
-    var imgHtml=p.img?'<img src="'+p.img+'" alt="'+p.name+'" loading="lazy"/>':'<div class="card-img-fallback">🧦</div>';
+    // Auto-prefix name with gender if not already present
+    var displayName=p.name;
+    var gPrefixes=['Ladies','Gents','Unisex','Kids'];
+    var hasPrefix=false;
+    gPrefixes.forEach(function(g){if(displayName.indexOf(g)!==-1)hasPrefix=true;});
+    if(!hasPrefix) displayName=p.gender+' – '+displayName;
+    var imgHtml=p.img
+      ?'<img src="'+p.img+'" alt="'+displayName+'" loading="lazy" class="zoomable" data-code="'+p.code+'" data-name="'+displayName.replace(/"/g,'&quot;')+'"/>'
+      :'<div class="card-img-fallback">🧦</div>';
     h+='<div class="card reveal">'
       +'<div class="card-img">'+imgHtml
       +(p.best_seller?'<span class="best-seller-ribbon">⭐ Best Seller</span>':'')
       +'<span class="card-gender-badge '+bc+'">'+(GENDER_EMOJI[p.gender]||'')+' '+p.gender+'</span>'
+      +'<span style="position:absolute;bottom:.5rem;left:.5rem;background:rgba(10,6,30,.65);color:rgba(245,237,214,.6);font-size:.52rem;letter-spacing:.1em;text-transform:uppercase;padding:.18rem .5rem;border:1px solid rgba(201,168,76,.15);pointer-events:none">🔍 Zoom</span>'
       +'</div><div class="card-body">'
       +'<div class="card-code">'+p.code+'</div>'
-      +'<div class="card-name">'+p.name+'</div>'
+      +'<div class="card-name">'+displayName+'</div>'
       +'<div class="card-type">'+p.type+'</div>'
       +'<div class="card-footer">'
       +'<span class="card-price">'+p.price+'</span>'
@@ -1135,6 +1210,32 @@ function showSync(msg,type){
   s.textContent=msg; s.className='show '+type;
   setTimeout(function(){s.className='';},3000);
 }
+
+// ═══ ZOOM ═══
+document.addEventListener('click', function(e) {
+  var img = e.target;
+  if (!img.classList || !img.classList.contains('zoomable')) return;
+  document.getElementById('zoomImg').src = img.src;
+  document.getElementById('zoomName').textContent = img.getAttribute('data-name') || '';
+  document.getElementById('zoomCode').textContent = img.getAttribute('data-code') || '';
+  document.getElementById('zoomOverlay').classList.add('open');
+  document.body.style.overflow = 'hidden';
+});
+document.getElementById('zoomOverlay').addEventListener('click', function() {
+  document.getElementById('zoomOverlay').classList.remove('open');
+  document.body.style.overflow = '';
+});
+document.getElementById('zoomClose').addEventListener('click', function(e) {
+  e.stopPropagation();
+  document.getElementById('zoomOverlay').classList.remove('open');
+  document.body.style.overflow = '';
+});
+document.addEventListener('keydown', function(e) {
+  if (e.key === 'Escape') {
+    document.getElementById('zoomOverlay').classList.remove('open');
+    document.body.style.overflow = '';
+  }
+});
 
 // ═══ START ═══
 gtag('event','page_view');
