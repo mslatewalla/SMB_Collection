@@ -26,12 +26,12 @@
     :root{
       --navy:#1a1040;--navy2:#120b30;
       --gold:#c9a84c;--gold-light:#e8c86d;--gold-dim:rgba(201,168,76,0.2);
-      --cream:#f5edd6;--warm:#ede0c4;--brown:#5c3d2e;
-      --text:#2c1810;--muted:#7a6353;--white:#fffdf8;
+      --cream:#f0e6cc;--warm:#ede0c4;--brown:#3d2010;
+      --text:#1a0f0a;--muted:#5a4535;--white:#faf4e8;
       --in-stock:#2d6a4f;--cart-red:#c0392b;
     }
     html{scroll-behavior:smooth}
-    body{font-family:'Raleway',sans-serif;background:var(--cream);color:var(--text);overflow-x:hidden}
+    body{font-family:'Raleway',sans-serif;background:var(--cream);color:#1a0f0a;overflow-x:hidden}
     body::before{content:'';position:fixed;inset:0;background-image:url("data:image/svg+xml,%3Csvg viewBox='0 0 200 200' xmlns='http://www.w3.org/2000/svg'%3E%3Cfilter id='n'%3E%3CfeTurbulence type='fractalNoise' baseFrequency='0.85' numOctaves='4' stitchTiles='stitch'/%3E%3C/filter%3E%3Crect width='100%25' height='100%25' filter='url(%23n)' opacity='0.04'/%3E%3C/svg%3E");pointer-events:none;z-index:9998;opacity:0.4}
 
     /* LOADING */
@@ -214,17 +214,35 @@
 
     /* CATALOG */
     .catalog{background:var(--white)}
-    .catalog-top{display:flex;align-items:flex-end;justify-content:space-between;flex-wrap:wrap;gap:1rem;margin-bottom:1.5rem}
+    .catalog-top{margin-bottom:1.5rem}
+    .filter-row-1{display:flex;align-items:center;justify-content:space-between;flex-wrap:wrap;gap:.75rem;margin-bottom:.5rem}
+    
     .catalog-filters{display:flex;gap:.6rem;flex-wrap:wrap}
     .filter-btn{padding:.42rem 1.15rem;border:1px solid var(--warm);background:transparent;font-family:'Raleway',sans-serif;font-size:.68rem;letter-spacing:.1em;text-transform:uppercase;cursor:pointer;color:var(--muted);transition:all .25s}
     .filter-btn.active,.filter-btn:hover{background:var(--navy);color:var(--gold);border-color:var(--navy)}
-    .type-filters{display:flex;gap:.5rem;flex-wrap:wrap;margin-top:.6rem;margin-bottom:2rem}
+    .type-filters{display:flex;gap:.5rem;flex-wrap:wrap;margin-top:.4rem;margin-bottom:1.5rem}
     .type-btn{padding:.32rem .9rem;border:1px solid var(--warm);background:transparent;font-family:'Raleway',sans-serif;font-size:.62rem;letter-spacing:.08em;text-transform:uppercase;cursor:pointer;color:var(--muted);transition:all .2s}
     .type-btn.active,.type-btn:hover{background:var(--gold);color:var(--navy);border-color:var(--gold)}
-    .catalog-meta{font-size:.72rem;color:var(--muted);margin-bottom:1.5rem}
+    .catalog-meta{font-size:.72rem;color:#5a4535;margin-bottom:1.5rem}
     .catalog-grid{display:grid;grid-template-columns:repeat(auto-fill,minmax(210px,1fr));gap:1.25rem}
-    #searchBox{padding:.42rem .9rem;border:1px solid var(--warm);background:transparent;font-family:'Raleway',sans-serif;font-size:.72rem;color:var(--text);outline:none;width:180px;transition:border .25s}
-    #searchBox:focus{border-color:var(--gold)}
+    /* SEARCH ROW */
+    .search-row{margin-top:.5rem}
+    .search-wrap{position:relative;display:flex;align-items:center}
+    .search-icon{position:absolute;left:1rem;font-size:.85rem;pointer-events:none;opacity:.5}
+    #searchBox{
+      width:100%;padding:.75rem 2.8rem .75rem 2.6rem;
+      border:1px solid var(--warm);border-bottom:2px solid var(--warm);
+      background:var(--white);
+      font-family:'Raleway',sans-serif;font-size:.82rem;color:var(--text);
+      outline:none;transition:border-color .25s,box-shadow .25s;
+      letter-spacing:.04em;
+    }
+    #searchBox:focus{border-color:var(--gold);border-bottom-color:var(--gold);box-shadow:0 2px 0 var(--gold-dim)}
+    #searchBox::placeholder{color:#b0a090;font-style:italic}
+    .search-clear{position:absolute;right:.8rem;background:none;border:none;cursor:pointer;
+      color:#b0a090;font-size:.85rem;padding:.2rem .3rem;display:none;transition:color .2s}
+    .search-clear:hover{color:var(--navy)}
+    .search-clear.show{display:block}
 
     /* PRICE FILTER */
     .price-filter{display:flex;align-items:center;gap:.45rem;flex-wrap:wrap;margin-top:.55rem}
@@ -247,9 +265,9 @@
     /* Best Seller ribbon */
     .best-seller-ribbon{position:absolute;top:.6rem;left:.6rem;background:var(--gold);color:var(--navy);font-size:.52rem;letter-spacing:.1em;text-transform:uppercase;padding:.2rem .5rem;font-weight:700}
     .card-body{padding:1rem 1.1rem 1.3rem}
-    .card-code{font-size:.58rem;letter-spacing:.15em;color:var(--muted);text-transform:uppercase;margin-bottom:.2rem}
-    .card-name{font-family:'Cormorant Garamond',serif;font-size:1.05rem;font-weight:600;color:var(--navy);margin-bottom:.3rem;line-height:1.2}
-    .card-type{font-size:.62rem;color:var(--muted);margin-bottom:.7rem;text-transform:uppercase;letter-spacing:.08em}
+    .card-code{font-size:.58rem;letter-spacing:.15em;color:#7a5a45;text-transform:uppercase;margin-bottom:.2rem}
+    .card-name{font-family:'Cormorant Garamond',serif;font-size:1.05rem;font-weight:600;color:#1a1040;margin-bottom:.3rem;line-height:1.2;font-weight:700}
+    .card-type{font-size:.62rem;color:#5a4535;margin-bottom:.7rem;text-transform:uppercase;letter-spacing:.08em}
     .card-footer{display:flex;align-items:center;justify-content:space-between;gap:.4rem}
     .card-price{font-family:'Cormorant Garamond',serif;font-size:1.2rem;font-weight:700;color:var(--brown)}
     .card-actions{display:flex;gap:.35rem}
@@ -464,7 +482,9 @@
   <h2 class="sec-title">The Collection</h2>
   <div class="sec-line"></div>
   <div class="catalog-top">
-    <div>
+
+    <!-- Row 1: Gender + Price -->
+    <div class="filter-row-1">
       <div class="catalog-filters" id="genderFilters">
         <button class="filter-btn active" data-g="all">All</button>
         <button class="filter-btn" data-g="Ladies">Ladies</button>
@@ -472,10 +492,6 @@
         <button class="filter-btn" data-g="Unisex">Unisex</button>
         <button class="filter-btn" data-g="Kids">Kids</button>
       </div>
-      <div class="type-filters" id="typeFilters"></div>
-    </div>
-    <div style="display:flex;flex-direction:column;gap:.5rem;align-items:flex-end">
-      <input id="searchBox" type="text" placeholder="Search products…"/>
       <div class="price-filter">
         <span class="price-filter-label">Price:</span>
         <button class="price-btn active" data-min="0" data-max="99999">All</button>
@@ -485,6 +501,20 @@
         <button class="price-btn" data-min="200" data-max="99999">₹200+</button>
       </div>
     </div>
+
+    <!-- Row 2: Type sub-filters -->
+    <div class="type-filters" id="typeFilters"></div>
+
+    <!-- Row 3: Full-width search -->
+    <div class="search-row">
+      <div class="search-wrap">
+        <span class="search-icon">🔍</span>
+        <input id="searchBox" type="text"
+          placeholder="Search by name, code or type… e.g. &quot;ankle&quot;, &quot;floral&quot;, &quot;L/AL&quot;"/>
+        <button class="search-clear" id="searchClear" title="Clear">✕</button>
+      </div>
+    </div>
+
   </div>
   <div class="catalog-meta" id="catalogMeta"></div>
   <div class="catalog-grid" id="catalogGrid"></div>
@@ -1172,8 +1202,18 @@ document.getElementById('genderFilters').addEventListener('click',function(e){
   renderTypeFilters(); renderProducts();
   gtag('event','filter_gender',{gender:activeGender});
 });
-document.getElementById('searchBox').addEventListener('input',function(e){
-  searchQuery=e.target.value.trim().toLowerCase(); renderProducts();
+var searchBox = document.getElementById('searchBox');
+var searchClear = document.getElementById('searchClear');
+searchBox.addEventListener('input',function(){
+  searchQuery = searchBox.value.trim().toLowerCase();
+  searchQuery ? searchClear.classList.add('show') : searchClear.classList.remove('show');
+  renderProducts();
+});
+searchClear.addEventListener('click',function(){
+  searchBox.value=''; searchQuery='';
+  searchClear.classList.remove('show');
+  renderProducts();
+  searchBox.focus();
 });
 document.getElementById('burger').addEventListener('click',function(){
   document.getElementById('navLinks').classList.toggle('open');
