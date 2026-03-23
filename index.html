@@ -175,7 +175,6 @@
     @media(max-width:480px){
       .fc-swiper{width:100%;max-width:100%;border-radius:0}
     }
-    }
 
 /* STATS */
     .stats{
@@ -774,7 +773,7 @@ function renderAll() {
   // Compute global price max from in-stock products
   var prices = allProducts.filter(function(p){ return p.in_stock && p.priceNum > 0; }).map(function(p){ return p.priceNum; });
   if (prices.length) {
-    PRICE_MAX_GLOBAL = Math.ceil(Math.max.apply(null, prices) / 10) * 10;
+    var PRICE_MAX_GLOBAL = Math.ceil(Math.max.apply(null, prices) / 10) * 10;
     priceMax = PRICE_MAX_GLOBAL;
   }
   renderCarousel();
@@ -865,6 +864,9 @@ function renderCarousel() {
 
   // Keyboard
   document.addEventListener('keydown', function(e){
+    // Ignore if the user is typing in an input or textarea
+    if (['INPUT', 'TEXTAREA'].includes(e.target.tagName)) return;
+    
     if (e.key==='ArrowLeft') fcGoTo(fcIndex-1, true);
     if (e.key==='ArrowRight') fcGoTo(fcIndex+1, true);
   });
@@ -1010,10 +1012,14 @@ function addToCart(p) {
 }
 
 function updateCartUI() {
-  var total=cart.length, totalVal=0;
-  cart.forEach(function(c){totalVal+=c.priceNum*c.qty;});
+  var total = 0, totalVal = 0;
+  cart.forEach(function(c){
+    total += c.qty; 
+    totalVal += c.priceNum * c.qty;
+  });
 
   document.getElementById('cartCount').textContent=total;
+  // ... rest of the function remains the same
   document.getElementById('cartItemCount').textContent=total+' item'+(total!==1?'s':'');
   document.getElementById('cartTotal').textContent=totalVal?'₹'+totalVal:'₹0';
   var badge=document.getElementById('cartBadge');
